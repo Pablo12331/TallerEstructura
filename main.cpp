@@ -25,7 +25,7 @@ int main()
         }
         if (resp=="2")
         {
-            eventos[0] -> getAlimentos();
+            cout<<eventos[0] -> getAlimentos()<<endl;
         }
         if (resp=="3")
         {

@@ -17,10 +17,10 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
         ~Eventos();//destructor
         void agregarAsistente(Asistentes);
         void setEstadoEvento(string);  
-        void informacionGeneral(vector<Eventos*>);/*la idea es darle como parametro la lista de eventos que sera
+        void informacionGeneral(vector<Eventos*>&);/*la idea es darle como parametro la lista de eventos que sera
         creada en el main y poder ir tirando la informacion que piden o al menos lo que es la lista de eventos programados y la lista 
         de asistentes registrados por cada evento*/
-        void agregarDatos(vector<Eventos*>);
+        void agregarDatos(vector<Eventos*>&);
         double getDuracion();
         string getAlimentos();
         string getFecha();
