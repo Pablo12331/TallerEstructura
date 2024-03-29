@@ -12,7 +12,8 @@ int main()
 
     cout<<"Bienvenido. Ingrese la fecha y hora actuales (Ej:28/03/2024-22:00): ";
     cin >> dia;
-
+    vector<Eventos*> eventos;
+    Eventos *aux;
     do
     {
         cout<<"\nEscoja una opción válida: "<<endl<<"1)Crear nuevo evento"<<endl<<"2)Registrar asistentes"<<
@@ -20,14 +21,11 @@ int main()
         cin >> resp;
         if (resp=="1")
         {
-            Eventos *aux;
-            vector<Eventos*> eventos;
             aux -> agregarDatos(eventos);
-            
         }
         if (resp=="2")
         {
-        
+            eventos[0] -> getAlimentos();
         }
         if (resp=="3")
         {

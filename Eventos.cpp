@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sstream>
 
+
 Eventos::Eventos(double duracion, string alimentos, string fecha, string tipoMusica, string estadoEvento)
 {
     this -> duracion = duracion;
@@ -24,14 +25,14 @@ void Eventos::setEstadoEvento(string estadoEvento)
 }
 void Eventos::informacionGeneral(vector<Eventos*> eventos)
 {
-    
-    for(Eventos* evento: eventos)
-    {
-        cout<< evento -> alimentos<<endl;
-    }
+    cout<<"a"<<endl;
+    cout<<eventos[0] -> getAlimentos()<<endl;
 }
 //Eventos::getDuracion();
-//Eventos::getAlimentos();
+string Eventos::getAlimentos()
+{
+    return this -> alimentos;
+}
 //Eventos::getFecha();
 //Eventos::getTipoMusica();
 //Eventos::getEstadoEvento();
@@ -64,6 +65,7 @@ void Eventos::agregarDatos(vector<Eventos*> eventos)//esto es una mausque herram
 
         Eventos *evento = new Eventos (duracion, alimentos, fecha, tipoMusica, estadoEvento);
         eventos.push_back(evento);
+        cout<<eventos[0] -> getAlimentos()<<endl;
     }
     
 }
