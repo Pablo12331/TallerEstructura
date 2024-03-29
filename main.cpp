@@ -10,12 +10,13 @@ int main()
     string dia;
     string resp;
 
-    cout<<"Bienvenido. Ingrese la fecha y hora actuales (Ej:28/03/2024-22:00): "<<endl;
+    cout<<"Bienvenido. Ingrese la fecha y hora actuales (Ej:28/03/2024-22:00): ";
     cin >> dia;
 
     do
     {
-        cout<<"Escoja una opción válida: "<<endl<<"1)Crear nuevo evento"<<endl<<"2)Registrar asistentes"<<endl<<"3)Revisión de Asistentes"<<endl<<"4)Informes de eventos"<<endl<<"5)Salir."<<endl;
+        cout<<"\nEscoja una opción válida: "<<endl<<"1)Crear nuevo evento"<<endl<<"2)Registrar asistentes"<<
+        endl<<"3)Revisión de Asistentes"<<endl<<"4)Informes de eventos"<<endl<<"5)Salir."<<endl<<"\nColoque su opciones aqui(Ejemplo: 1): ";
         cin >> resp;
         if (resp=="1")
         {
