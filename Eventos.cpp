@@ -24,15 +24,21 @@ void Eventos::setEstadoEvento(string estadoEvento)
 }
 void Eventos::informacionGeneral(vector<Eventos*> eventos)
 {
+    
     for(Eventos* evento: eventos)
     {
-        //forma de sumar datos para luego darlos por pantalla por el pedido de informacion
+        cout<< evento -> alimentos<<endl;
     }
 }
+//Eventos::getDuracion();
+//Eventos::getAlimentos();
+//Eventos::getFecha();
+//Eventos::getTipoMusica();
+//Eventos::getEstadoEvento();
 void Eventos::agregarDatos(vector<Eventos*> eventos)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
     ifstream archivo;
-    string texto;
+    string texto, duracionString, alimentos, fecha, tipoMusica, estadoEvento;
 
     archivo.open("prueba de leerArchivos.txt", ios::in);
 
@@ -46,6 +52,18 @@ void Eventos::agregarDatos(vector<Eventos*> eventos)//esto es una mausque herram
     {
         getline(archivo, texto);
         cout<<texto<<endl;
+
+        stringstream datosSeparar(texto);
+    
+        getline(datosSeparar, duracionString, ',');
+        getline(datosSeparar, alimentos, ',');
+        getline(datosSeparar, fecha, ',');
+        getline(datosSeparar, tipoMusica, ',');
+        getline(datosSeparar, estadoEvento, ',');
+        double duracion = stod(duracionString);
+
+        Eventos *evento = new Eventos (duracion, alimentos, fecha, tipoMusica, estadoEvento);
+        eventos.push_back(evento);
     }
-    stringstream input_stringstream(texto);
+    
 }
