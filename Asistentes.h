@@ -19,5 +19,5 @@ class Asistentes
         string getDatoDiferenciador();
         string getEstadoAsistencia();
         void setEstadoAsistencia(string);
-        void agregarDatos(vector<Asistentes*>);
+        void agregarDatos(vector<Asistentes*>&);
 };
