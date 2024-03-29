@@ -21,11 +21,11 @@ int main()
         cin >> resp;
         if (resp=="1")
         {
-            aux -> agregarDatos(eventos);
+            
         }
         if (resp=="2")
         {
-            cout<<eventos[0] -> getAlimentos()<<endl;
+            
         }
         if (resp=="3")
         {
