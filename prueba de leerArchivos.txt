@@ -1,0 +1,1 @@
+1,tipoDePersona,rutDeLaPersona,nombreDeLaPersona,datoDiferenciadorDeLaPersona,estadoDeLaPersona
