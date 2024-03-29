@@ -1,4 +1,5 @@
 #include "Asistentes.h"
+#include <fstream>
 
 Asistentes::Asistentes(int edad, string tipoPersona, string rut, string nombre, string datoDiferenciador, string estadoAsistencia)
 {
@@ -41,5 +42,6 @@ void Asistentes::setEstadoAsistencia(string estadoAsistencia)
 }
 void Asistentes::agregarDatos(vector<Asistentes*> asistentes)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
-
+    ifstream archivo;
+    archivo.open("prueba de leerArchivo.txt", ios::in);
 }

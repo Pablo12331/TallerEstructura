@@ -1,1 +1,1 @@
-1,tipoDePersona,rutDeLaPersona,nombreDeLaPersona,datoDiferenciadorDeLaPersona,estadoDeLaPersona
+1.1,alimentoEvento,fechaEvento,musicaEvento,estadoEvento,ubicacionEVento
