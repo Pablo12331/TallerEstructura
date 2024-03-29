@@ -10,7 +10,7 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
     private:
         vector<Asistentes*> asistentes;//se pueden tener lista con solo direcciones de memorias lets goooooo
         double duracion;
-        string alimentos, fecha, musica, estadoEvento, ubicacion;
+        string alimentos, fecha, tipoMusica, estadoEvento;
     
     public:
         Eventos(double, string, string, string, string, string);

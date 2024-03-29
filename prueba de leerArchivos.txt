@@ -1,1 +1,1 @@
-1.1,alimentoEvento,fechaEvento,musicaEvento,estadoEvento,ubicacionEVento
+1.1,alimentoEvento,fechaEvento,tipoMusicaEvento,estadoEvento
