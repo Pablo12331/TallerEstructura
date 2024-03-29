@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "Asistentes.h"
 #include "Eventos.h"
+//#include "Asistentes.h"
 
 using namespace std;
 

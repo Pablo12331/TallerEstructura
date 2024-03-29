@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string.h>
+#include <sstream>
 
 Eventos::Eventos(double duracion, string alimentos, string fecha, string tipoMusica, string estadoEvento)
 {
@@ -46,4 +47,5 @@ void Eventos::agregarDatos(vector<Eventos*> eventos)//esto es una mausque herram
         getline(archivo, texto);
         cout<<texto<<endl;
     }
+    stringstream input_stringstream(texto);
 }
