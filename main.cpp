@@ -20,6 +20,9 @@ int main()
         cin >> resp;
         if (resp=="1")
         {
+            Eventos *aux;
+            vector<Eventos*> eventos;
+            aux -> agregarDatos(eventos);
             
         }
         if (resp=="2")

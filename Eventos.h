@@ -13,7 +13,7 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
         string alimentos, fecha, tipoMusica, estadoEvento;
     
     public:
-        Eventos(double, string, string, string, string, string);
+        Eventos(double, string, string, string, string);
         ~Eventos();//destructor
         void agregarAsistente(Asistentes);
         void setEstadoEvento(string);  
