@@ -14,34 +14,38 @@ int main()
     cin >> dia;
     vector<Eventos*> eventos;
     Eventos *aux;
+    int respuesta;
     do
     {
         cout<<"\nEscoja una opción válida: "<<endl<<"1)Crear nuevo evento"<<endl<<"2)Registrar asistentes"<<
-        endl<<"3)Revisión de Asistentes"<<endl<<"4)Informes de eventos"<<endl<<"5)Salir."<<endl<<"\nColoque su opciones aqui(Ejemplo: 1): ";
+        endl<<"3)Revisión de Asistentes"<<endl<<"4)Informes de eventos"<<endl
+        <<"5)Cancelar evento"<<endl<<"6)Salir."<<endl<<"\nColoque su opciones aqui(Ejemplo: 1): ";
         cin >> resp;
-        if (resp=="1")
+        respuesta = stoi(resp);
+        switch(respuesta)
         {
-            
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+                
+                break;
+            case 6:
+                cout<<"saliendo..."<<endl;
+                break;
         }
-        if (resp=="2")
-        {
-            
-        }
-        if (resp=="3")
-        {
-        
-        }
-        if (resp=="4")
-        {
-        
-        }
-        if (resp=="5")
-        {
-            cout<<"Saliendo..."<<endl;
-            break;
-        }
+
     }
-    while(resp != "5");
+    while(respuesta != 6);
     return 0;
 }
 int sistema()
