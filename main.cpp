@@ -7,14 +7,17 @@ using namespace std;
 
 int sistema()
 {
-    string dia;
+    string fechaActualidad;
     string resp;
 
     vector<Eventos*> eventos;
     Eventos* aux;
+    
     cout<<"Bienvenido. Ingrese la fecha de hoy(Ej:28/03/2024): ";
-    cin >> dia;
+    cin >> fechaActualidad;
 
+    aux->agregarDatos(eventos, fechaActualidad);
+    
     int respuesta;
     do
     {
@@ -28,12 +31,9 @@ int sistema()
         switch(respuesta)
         {
             case 1:
-                aux->agregarDatos(eventos, dia);
-                cout<<eventos.size()<<endl;
-                if(aux->cantidadEventosDia(eventos, dia))
+                if(aux->cantidadEventosDia(eventos, fechaActualidad))
                 {
-                    cout<<eventos[0]->getAlimentos()<<endl;
-                    aux->crearEvento(eventos, dia);
+                    aux->crearEvento(eventos, fechaActualidad);
                 }
                 else
                 {

@@ -138,8 +138,14 @@ void Eventos::agregarDatos(vector<Eventos*>& eventos, string fechaHoy)//esto es 
         getline(datosSeparar, tipoMusica, ',');
         getline(datosSeparar, codigoEvento, ',');
 
-        Eventos *evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
-        eventos.push_back(evento);
+        Eventos *evento;
+        
+        if(!compararFechas(fechaHoy, fecha))
+        {
+            evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
+            eventos.push_back(evento);
+        }
+        
     }
     archivo.close();
 }
