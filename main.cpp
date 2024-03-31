@@ -29,8 +29,11 @@ int sistema()
         {
             case 1:
                 aux->agregarDatos(eventos);
-                cout<<eventos[0]->getAlimentos()<<endl;
-                aux->crearEvento(eventos, dia);
+                if(aux->cantidadEventosDia(eventos, dia))
+                {
+                    cout<<eventos[0]->getAlimentos()<<endl;
+                    aux->crearEvento(eventos, dia);
+                }
                 break;
             case 2:
 

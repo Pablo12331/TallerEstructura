@@ -47,25 +47,50 @@ string Eventos::getCodigoEvento()
 {
     return this -> codigoEvento;
 }
-bool Eventos::compararFechas(string fechaHoy, string fecha)
+
+bool Eventos::cantidadEventosDia(vector<Eventos*>& eventos, string fechaHoy)
 {
-    string diaHoy, dia, meshoy, mes, añoHoy, año;
-    if(fecha == fechaHoy)
+    int cantidadEventos;
+    for(Eventos* evento : eventos)
+    {
+        if(evento->getFecha() == fechaHoy)
+        {
+            ++cantidadEventos;
+        }
+    }
+    if(cantidadEventos == 3){return false;}
+    else{return true;}
+}
+
+bool Eventos::compararFechas(string fecha1, string fecha2)
+{
+    string dia1, dia2, mes1, mes2, year1, year2;
+    if(fecha1 == fecha2)
     {
         return false;
     }
 
-    stringstream fechaHoySeparada(fechaHoy);
-    getline(fechaHoySeparada, diaHoy,'/'); getline(fechaHoySeparada, meshoy,'/'); getline(fechaHoySeparada, añoHoy,'/');
-    stringstream fechaSeparada(fecha);
-    getline(fechaSeparada, dia,'/'); getline(fechaSeparada, mes,'/'); getline(fechaSeparada, año,'/');
-    if(diaHoy <= dia)
+    stringstream fecha1Separada(fecha1);
+    getline(fecha1Separada, dia1,'/'); getline(fecha1Separada, mes1,'/'); getline(fecha1Separada, year1,'/');
+    stringstream fecha2Separada(fecha2);
+    getline(fecha2Separada, dia2,'/'); getline(fecha2Separada, mes2,'/'); getline(fecha2Separada, year2,'/');
+    if(year1 < year2)
+    {
+        return false;
+    }
+    else if(mes1 < mes2 && year1 == year2)
+    {
+        return false;
+    }
+    else if(dia1 < dia2 && mes1 == mes2 && year1 == year2)
     {
         return false;
     }
 
     return true;
 }
+
+
 
 void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 {
@@ -74,8 +99,15 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
     {
         cout<<"\nIngrese la fecha en la que se hara el evento(Ej:28/03/2024): ";
         cin >> fecha;
+        if(compararFechas(fechaHoy, fecha))
+        {
+            cout<<"La fecha ingresada es menor a la fecha de el dia de hoy.";
+            continue;
+        }
     } while (compararFechas(fechaHoy, fecha));
+
     
+
 }
 
 void Eventos::agregarDatos(vector<Eventos*>& eventos)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
