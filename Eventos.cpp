@@ -32,6 +32,7 @@ string Eventos::getAlimentos()
 {
     return this -> alimentos;
 }
+
 string Eventos::getFecha()
 {
     return this->fecha;
@@ -46,7 +47,25 @@ string Eventos::getCodigoEvento()
 {
     return this -> codigoEvento;
 }
-bool compararFechas();
+bool Eventos::compararFechas(string fechaHoy, string fecha)
+{
+    string diaHoy, dia, meshoy, mes, añoHoy, año;
+    if(fecha == fechaHoy)
+    {
+        return false;
+    }
+
+    stringstream fechaHoySeparada(fechaHoy);
+    getline(fechaHoySeparada, diaHoy,'/'); getline(fechaHoySeparada, meshoy,'/'); getline(fechaHoySeparada, añoHoy,'/');
+    stringstream fechaSeparada(fecha);
+    getline(fechaSeparada, dia,'/'); getline(fechaSeparada, mes,'/'); getline(fechaSeparada, año,'/');
+    if(diaHoy <= dia)
+    {
+        return false;
+    }
+
+    return true;
+}
 
 void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 {
@@ -55,11 +74,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
     {
         cout<<"\nIngrese la fecha en la que se hara el evento(Ej:28/03/2024): ";
         cin >> fecha;
-        if(fecha == fechaHoy)
-        {
-            break;
-        }
-    } while (compararFechas());
+    } while (compararFechas(fechaHoy, fecha));
     
 }
 
@@ -91,4 +106,5 @@ void Eventos::agregarDatos(vector<Eventos*>& eventos)//esto es una mausque herra
         Eventos *evento = new Eventos(ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
         eventos.push_back(evento);
     }
+    archivo.close();
 }
