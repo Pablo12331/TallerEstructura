@@ -31,6 +31,7 @@ int sistema()
         switch(respuesta)
         {
             case 1:
+                cout<<eventos.size()<<endl;
                 if(aux->cantidadEventosDia(eventos, fechaActualidad))
                 {
                     aux->crearEvento(eventos, fechaActualidad);
@@ -39,6 +40,10 @@ int sistema()
                 {
                     cout<<"Capacidad maxima de eventos alcanzada, no se pueden crear mas eventos."<<endl;
                 }
+                cout<<eventos.size()<<endl;
+                eventos[0] -> ~Eventos();
+                cout<<eventos.size()<<endl;
+                cout<<eventos[0]->getFecha();
                 break;
             case 2:
 

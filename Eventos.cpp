@@ -104,14 +104,14 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
         cin >> fecha;
         if(compararFechas(fechaHoy, fecha))
         {
-            cout<<"La fecha ingresada es menor a la fecha de el dia de hoy.";
+            cout<<"\nLa fecha ingresada es menor a la fecha de el dia de hoy.";
             continue;
         }
     } while (compararFechas(fechaHoy, fecha));
 
     do
     {
-        cout<<"De que tipo quiere que sea su evento: \n"
+        cout<<"\nDe que tipo quiere que sea su evento: \n"
             <<"\n 1) boda"
             <<"\n 2) Reunion de Trabajo"
             <<"\n 3) Carrete"
@@ -133,17 +133,22 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
                 cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
         }
 
-    } while (true);
+    } while (eleccion != 1 && eleccion != 2 && eleccion != 3);
 
-    cout<<"Ubicacion del evento: ";
+    cout<<"\nUbicacion del evento: ";
     cin >> ubicacion;
 
-    cout<<"Alimentacion: ";
+    cout<<"\nAlimentacion: ";
     cin >> alimentos;
 
-    cout<<"codigo evento: ";
-    cin >> codigoEvento;
+    cout<<"\nTipo de Musica: ";
+    cin >> tipoMusica;
 
+    cout<<"\ncodigo evento: ";
+    cin >> codigoEvento;
+    
+    Eventos *evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
+    eventos.push_back(evento);
 }
 
 void Eventos::agregarDatos(vector<Eventos*>& eventos, string fechaHoy)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
