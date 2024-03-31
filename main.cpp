@@ -28,7 +28,7 @@ int sistema()
         switch(respuesta)
         {
             case 1:
-                aux->agregarDatos(eventos);
+                aux->agregarDatos(eventos, dia);
                 cout<<eventos.size()<<endl;
                 if(aux->cantidadEventosDia(eventos, dia))
                 {

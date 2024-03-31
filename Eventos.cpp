@@ -5,8 +5,9 @@
 #include <sstream>
 
 
-Eventos::Eventos(string ubicacion, string alimentos, string fecha, string tipoMusica, string codigoEvento)
+Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string fecha, string tipoMusica, string codigoEvento)
 {
+    this-> tipoEvento = tipoEvento;
     this-> ubicacion = ubicacion;
     this -> alimentos = alimentos;
     this -> fecha = fecha;
@@ -74,6 +75,7 @@ bool Eventos::compararFechas(string fecha1, string fecha2)
     getline(fecha1Separada, dia1,'/'); getline(fecha1Separada, mes1,'/'); getline(fecha1Separada, year1,'/');
     stringstream fecha2Separada(fecha2);
     getline(fecha2Separada, dia2,'/'); getline(fecha2Separada, mes2,'/'); getline(fecha2Separada, year2,'/');
+    
     if(year1 < year2)
     {
         return false;
@@ -110,10 +112,10 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 
 }
 
-void Eventos::agregarDatos(vector<Eventos*>& eventos)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
+void Eventos::agregarDatos(vector<Eventos*>& eventos, string fechaHoy)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
     ifstream archivo;
-    string texto, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
+    string texto, tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
 
     archivo.open("prueba de leerArchivos.txt", ios::in);
 
@@ -128,14 +130,15 @@ void Eventos::agregarDatos(vector<Eventos*>& eventos)//esto es una mausque herra
         getline(archivo, texto);
 
         stringstream datosSeparar(texto);
-    
+
+        getline(datosSeparar, tipoEvento, ',');
         getline(datosSeparar, ubicacion, ',');
         getline(datosSeparar, alimentos, ',');
         getline(datosSeparar, fecha, ',');
         getline(datosSeparar, tipoMusica, ',');
         getline(datosSeparar, codigoEvento, ',');
 
-        Eventos *evento = new Eventos(ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
+        Eventos *evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
         eventos.push_back(evento);
     }
     archivo.close();
