@@ -50,7 +50,7 @@ string Eventos::getCodigoEvento()
 
 bool Eventos::cantidadEventosDia(vector<Eventos*>& eventos, string fechaHoy)
 {
-    int cantidadEventos;
+    int cantidadEventos = 0;
     for(Eventos* evento : eventos)
     {
         if(evento->getFecha() == fechaHoy)
@@ -106,7 +106,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
         }
     } while (compararFechas(fechaHoy, fecha));
 
-    
+
 
 }
 

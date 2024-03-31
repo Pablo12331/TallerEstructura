@@ -29,10 +29,15 @@ int sistema()
         {
             case 1:
                 aux->agregarDatos(eventos);
+                cout<<eventos.size()<<endl;
                 if(aux->cantidadEventosDia(eventos, dia))
                 {
                     cout<<eventos[0]->getAlimentos()<<endl;
                     aux->crearEvento(eventos, dia);
+                }
+                else
+                {
+                    cout<<"Capacidad maxima de eventos alcanzada, no se pueden crear mas eventos."<<endl;
                 }
                 break;
             case 2:

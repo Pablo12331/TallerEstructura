@@ -1,1 +1,3 @@
-22:30,1.1,alimentoEvento,fechaEvento,tipoMusicaEvento,estadoEvento
+Coquimboparte Alta,ali,28/03/2024,tipoMusicaEvento,codigo
+Coquimboparte Alta,ali,28/03/2024,tipoMusicaEvento,codigo
+Coquimboparte Alta,ali,28/03/2024,tipoMusicaEvento,codigo
