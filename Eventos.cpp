@@ -5,10 +5,10 @@
 #include <sstream>
 
 
-Eventos::Eventos(double duracion, string horaInicio, string alimentos, string fecha, string tipoMusica, string estadoEvento)
+Eventos::Eventos(string horaInicio, double duracion, string alimentos, string fecha, string tipoMusica, string estadoEvento)
 {
-    this -> duracion = duracion;
     this-> horaInicio = horaInicio;
+    this -> duracion = duracion;
     this -> alimentos = alimentos;
     this -> fecha = fecha;
     this -> tipoMusica =tipoMusica;
@@ -64,16 +64,15 @@ void Eventos::agregarDatos(vector<Eventos*>& eventos)//esto es una mausque herra
 
         stringstream datosSeparar(texto);
     
-        getline(datosSeparar, duracionString, ',');
         getline(datosSeparar, horaInicio, ',');
+        getline(datosSeparar, duracionString, ',');
         getline(datosSeparar, alimentos, ',');
         getline(datosSeparar, fecha, ',');
         getline(datosSeparar, tipoMusica, ',');
         getline(datosSeparar, estadoEvento, ',');
         double duracion = stod(duracionString);
 
-        Eventos *evento = new Eventos(duracion, horaInicio, alimentos, fecha, tipoMusica, estadoEvento);
+        Eventos *evento = new Eventos(horaInicio, duracion, alimentos, fecha, tipoMusica, estadoEvento);
         eventos.push_back(evento);
     }
-    archivo.close();
 }

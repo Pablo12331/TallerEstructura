@@ -1,1 +1,1 @@
-1.1,alimentoEvento,fechaEvento,tipoMusicaEvento,estadoEvento
+22:30,1.1,alimentoEvento,fechaEvento,tipoMusicaEvento,estadoEvento
