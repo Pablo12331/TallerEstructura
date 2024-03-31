@@ -18,7 +18,7 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
         void agregarAsistente(Asistentes);
         void crearEvento(vector<Eventos*>&);
         void setEstadoEvento(string); 
-        virtual void crearEvento();
+        void crearEvento();
         void informacionGeneral(vector<Eventos*>&);/*la idea es darle como parametro la lista de eventos que sera
         creada en el main y poder ir tirando la informacion que piden o al menos lo que es la lista de eventos programados y la lista 
         de asistentes registrados por cada evento*/

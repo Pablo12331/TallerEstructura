@@ -33,13 +33,24 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
         
     }
 }
-//Eventos::getDuracion();
+double Eventos::getDuracion()
+{
+    return this->duracion;
+}
 string Eventos::getAlimentos()
 {
     return this -> alimentos;
 }
-//Eventos::getFecha();
-//Eventos::getTipoMusica();
+string Eventos::getFecha()
+{
+    return this->fecha;
+}
+
+string Eventos::getTipoMusica()
+{
+    return this->tipoMusica;
+}
+
 string Eventos::getEstadoEvento()
 {
     return this -> estadoEvento;
