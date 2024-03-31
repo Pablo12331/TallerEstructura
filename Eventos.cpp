@@ -96,7 +96,8 @@ bool Eventos::compararFechas(string fecha1, string fecha2)
 
 void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 {
-    string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento, eleccion; 
+    string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento; 
+    int eleccion;
     do
     {
         cout<<"\nIngrese la fecha en la que se hara el evento(Ej:28/03/2024): ";
@@ -110,25 +111,37 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 
     do
     {
-        cout<<"Seleccione una de las opciones en pantalla: \n"
+        cout<<"De que tipo quiere que sea su evento: \n"
             <<"\n 1) boda"
             <<"\n 2) Reunion de Trabajo"
             <<"\n 3) Carrete"
             <<endl
             <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
-        
-    } while (eleccion != "1" || eleccion != "2" || eleccion != "3");
+        cin >> eleccion;
+        switch (eleccion)
+        {
+            case 1:
+                tipoEvento = "boda";
+                break;
+            case 2:
+                tipoEvento = "Reunion de trabajo";
+                break;
+            case 3:
+                tipoEvento = "Carrete";
+                break;
+            default:
+                cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
+        }
+
+    } while (true);
 
     cout<<"Ubicacion del evento: ";
     cin >> ubicacion;
 
-    cout<<"Ubicacion del evento: ";
+    cout<<"Alimentacion: ";
     cin >> alimentos;
-    
-    cout<<"Ubicacion del evento: ";
-    cin >> fecha;
 
-    cout<<"Ubicacion del evento: ";
+    cout<<"codigo evento: ";
     cin >> codigoEvento;
 
 }
