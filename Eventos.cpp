@@ -5,25 +5,19 @@
 #include <sstream>
 
 
-Eventos::Eventos(string horaInicio, double duracion, string alimentos, string fecha, string tipoMusica, string estadoEvento)
+Eventos::Eventos(string ubicacion, string alimentos, string fecha, string tipoMusica, string codigoEvento)
 {
-    this-> horaInicio = horaInicio;
-    this -> duracion = duracion;
+    this-> ubicacion = ubicacion;
     this -> alimentos = alimentos;
     this -> fecha = fecha;
     this -> tipoMusica =tipoMusica;
-    this -> estadoEvento = estadoEvento;
+    this -> codigoEvento = codigoEvento;
 }
 Eventos::~Eventos(){}//destructor
 
 void Eventos::agregarAsistente(Asistentes asistente)
 {
     this -> asistentes.push_back(&asistente);
-}
-
-void Eventos::setEstadoEvento(string estadoEvento) 
-{
-    this -> estadoEvento = estadoEvento;
 }
 
 void Eventos::informacionGeneral(vector<Eventos*>& eventos)
@@ -33,10 +27,7 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
         
     }
 }
-double Eventos::getDuracion()
-{
-    return this->duracion;
-}
+
 string Eventos::getAlimentos()
 {
     return this -> alimentos;
@@ -51,15 +42,31 @@ string Eventos::getTipoMusica()
     return this->tipoMusica;
 }
 
-string Eventos::getEstadoEvento()
+string Eventos::getCodigoEvento()
 {
-    return this -> estadoEvento;
+    return this -> codigoEvento;
+}
+bool compararFechas();
+
+void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
+{
+    string ubicacion, alimentos, fecha, tipoMusica, codigoEvento; 
+    do
+    {
+        cout<<"\nIngrese la fecha en la que se hara el evento(Ej:28/03/2024): ";
+        cin >> fecha;
+        if(fecha == fechaHoy)
+        {
+            break;
+        }
+    } while (compararFechas());
+    
 }
 
 void Eventos::agregarDatos(vector<Eventos*>& eventos)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
     ifstream archivo;
-    string texto, duracionString, horaInicio, alimentos, fecha, tipoMusica, estadoEvento;
+    string texto, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
 
     archivo.open("prueba de leerArchivos.txt", ios::in);
 
@@ -75,15 +82,13 @@ void Eventos::agregarDatos(vector<Eventos*>& eventos)//esto es una mausque herra
 
         stringstream datosSeparar(texto);
     
-        getline(datosSeparar, horaInicio, ',');
-        getline(datosSeparar, duracionString, ',');
+        getline(datosSeparar, ubicacion, ',');
         getline(datosSeparar, alimentos, ',');
         getline(datosSeparar, fecha, ',');
         getline(datosSeparar, tipoMusica, ',');
-        getline(datosSeparar, estadoEvento, ',');
-        double duracion = stod(duracionString);
+        getline(datosSeparar, codigoEvento, ',');
 
-        Eventos *evento = new Eventos(horaInicio, duracion, alimentos, fecha, tipoMusica, estadoEvento);
+        Eventos *evento = new Eventos(ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
         eventos.push_back(evento);
     }
 }

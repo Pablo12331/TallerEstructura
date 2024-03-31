@@ -61,7 +61,7 @@ int main()
 
     vector<Eventos*> eventos;
     Eventos* aux;
-    cout<<"Bienvenido. Ingrese la fecha y hora actuales (Ej:28/03/2024-22:00): ";
+    cout<<"Bienvenido. Ingrese la fecha de hoy(Ej:28/03/2024): ";
     cin >> dia;
 
     int respuesta;
@@ -79,6 +79,7 @@ int main()
             case 1:
                 aux->agregarDatos(eventos);
                 cout<<eventos[0]->getDuracion()<<endl;
+                aux->crearEvento(eventos, dia);
                 break;
             case 2:
 
