@@ -1,7 +1,7 @@
 #pragma once
+#include "Asistentes.h"
 #include <iostream>
 #include <vector>
-#include "Asistentes.h"
 
 using namespace std;
 
@@ -26,6 +26,4 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
         string getFecha();
         string getTipoMusica();
         string getEstadoEvento();
-        
-        
 };
