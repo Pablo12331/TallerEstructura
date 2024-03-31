@@ -5,9 +5,10 @@
 #include <sstream>
 
 
-Eventos::Eventos(double duracion, string alimentos, string fecha, string tipoMusica, string estadoEvento)
+Eventos::Eventos(double duracion, string horaInicio, string alimentos, string fecha, string tipoMusica, string estadoEvento)
 {
     this -> duracion = duracion;
+    this-> horaInicio = horaInicio;
     this -> alimentos = alimentos;
     this -> fecha = fecha;
     this -> tipoMusica =tipoMusica;
@@ -19,10 +20,12 @@ void Eventos::agregarAsistente(Asistentes asistente)
 {
     this -> asistentes.push_back(&asistente);
 }
+
 void Eventos::setEstadoEvento(string estadoEvento) 
 {
     this -> estadoEvento = estadoEvento;
 }
+
 void Eventos::informacionGeneral(vector<Eventos*>& eventos)
 {
     for(Eventos* evento : eventos)
@@ -45,7 +48,7 @@ string Eventos::getEstadoEvento()
 void Eventos::agregarDatos(vector<Eventos*>& eventos)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
     ifstream archivo;
-    string texto, duracionString, alimentos, fecha, tipoMusica, estadoEvento;
+    string texto, duracionString, horaInicio, alimentos, fecha, tipoMusica, estadoEvento;
 
     archivo.open("prueba de leerArchivos.txt", ios::in);
 
@@ -62,14 +65,15 @@ void Eventos::agregarDatos(vector<Eventos*>& eventos)//esto es una mausque herra
         stringstream datosSeparar(texto);
     
         getline(datosSeparar, duracionString, ',');
+        getline(datosSeparar, horaInicio, ',');
         getline(datosSeparar, alimentos, ',');
         getline(datosSeparar, fecha, ',');
         getline(datosSeparar, tipoMusica, ',');
         getline(datosSeparar, estadoEvento, ',');
         double duracion = stod(duracionString);
 
-        Eventos *evento = new Eventos(duracion, alimentos, fecha, tipoMusica, estadoEvento);
+        Eventos *evento = new Eventos(duracion, horaInicio, alimentos, fecha, tipoMusica, estadoEvento);
         eventos.push_back(evento);
     }
-    
+    archivo.close();
 }

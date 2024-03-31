@@ -7,5 +7,9 @@
 
 class Carrete : public Eventos
 {
+    public:
+        Carrete();
+        ~Carrete();
+        
 
 };

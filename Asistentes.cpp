@@ -72,4 +72,5 @@ void Asistentes::agregarDatos(vector<Asistentes*>& asistentes)//esto es una maus
         Asistentes *asistente= new Asistentes(edad, tipoPersona, rut, nombre, datoDiferenciador, estadoAsistencia);
         asistentes.push_back(asistente);
     }
+    archivo.close();
 }

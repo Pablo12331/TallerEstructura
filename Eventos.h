@@ -10,13 +10,15 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
     private:
         vector<Asistentes*> asistentes;//se pueden tener lista con solo direcciones de memorias lets goooooo
         double duracion;
-        string alimentos, fecha, tipoMusica, estadoEvento;
+        string horaInicio, alimentos, fecha, tipoMusica, estadoEvento;
     
     public:
-        Eventos(double, string, string, string, string);
+        Eventos(double, string, string, string, string, string);
         ~Eventos();//destructor
         void agregarAsistente(Asistentes);
-        void setEstadoEvento(string);  
+        void crearEvento(vector<Eventos*>&);
+        void setEstadoEvento(string); 
+        virtual void crearEvento();
         void informacionGeneral(vector<Eventos*>&);/*la idea es darle como parametro la lista de eventos que sera
         creada en el main y poder ir tirando la informacion que piden o al menos lo que es la lista de eventos programados y la lista 
         de asistentes registrados por cada evento*/
