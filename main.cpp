@@ -17,7 +17,7 @@ int sistema()
     
     cout<<"Bienvenido. Ingrese la fecha de hoy(Ej:28/03/2024): ";
     cin >> fechaActualidad;
-    
+
     agregarDatos(eventos, fechaActualidad);
 
     int respuesta;
@@ -43,7 +43,7 @@ int sistema()
                     cout<<"Capacidad maxima de eventos alcanzada, no se pueden crear mas eventos."<<endl;
                 }
                 cout<<eventos.size()<<endl;
-                eventos[0] -> ~Eventos();
+                //delete(eventos[0]);
                 cout<<eventos.size()<<endl;
                 cout<<eventos[0]->getFecha();
                 break;
@@ -93,7 +93,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)//esto es una mausq
     {
         Eventos* aux;
         getline(archivo, texto);
-        aux->agregarDatos(eventos, fechaHoy, texto);
+        aux->agregarDatosEventos(eventos, fechaHoy, texto);
     }
 
     archivo.close();

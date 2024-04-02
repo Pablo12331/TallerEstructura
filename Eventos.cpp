@@ -20,7 +20,10 @@ Eventos::~Eventos(){}//destructor
 
 void Eventos::agregarAsistente(Asistentes* asistente)
 {
-    this -> asistentes.push_back(asistente);
+    if(asistente != nullptr)
+    {
+        this -> asistentes.push_back(asistente);
+    }
 }
 
 void Eventos::informacionGeneral(vector<Eventos*>& eventos)
@@ -231,6 +234,7 @@ void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, st
 
     if(tipoEvento != "Boda" && tipoEvento != "Reunion de Trabajo" && tipoEvento != "Carrete")
     {
+        cout<<"a"<<endl;
         agregarAsistente(aux->agregarDatosAsistentes(linea));
     }
     else

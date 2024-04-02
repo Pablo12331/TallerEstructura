@@ -56,9 +56,14 @@ Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es u
     getline(datosSeparar, estadoAsistencia, ',');
 
     int edad = stoi(edadString);
-
-    Asistentes* asistente = new Asistentes(edad, tipoPersona, rut, nombre, datoDiferenciador, estadoAsistencia);
-
-    return asistente;
+    if(edad < 18)
+    {
+        return nullptr;
+    }
+    else
+    {
+        Asistentes* asistente = new Asistentes(edad, tipoPersona, rut, nombre, datoDiferenciador, estadoAsistencia);
+        return asistente;
+    }
 
 }

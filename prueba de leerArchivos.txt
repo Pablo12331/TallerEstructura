@@ -1,3 +1,5 @@
-carrete,Coquimboparte Alta,ali,28/03/2023,tipoMusicaEvento,codigo
-carrete,Coquimboparte Alta,ali,28/03/2026,tipoMusicaEvento,codigo
-carrete,Coquimboparte Alta,ali,28/03/2027,tipoMusicaEvento,codigo
+Carrete,Coquimboparte Alta,ali,28/03/2023,tipoMusicaEvento,codigo
+30,Estudiante,12345678-9,Juan Pérez,Amante del café,Presente
+22,Profesional,98765432-1,Ana Morales,Vegana,Ausente
+Carrete,Coquimboparte Alta,ali,28/03/2026,tipoMusicaEvento,codigo
+Carrete,Coquimboparte Alta,ali,28/03/2027,tipoMusicaEvento,codigo
