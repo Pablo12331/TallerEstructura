@@ -3,9 +3,32 @@
 #include <fstream>
 #include <sstream>
 #include "Eventos.h"
-//#include "Asistentes.h"
+#include "Asistentes.h"
 
 using namespace std;
+
+void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
+{
+    ifstream archivo;
+    string texto, tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
+
+    archivo.open("prueba de leerArchivos.txt", ios::in);
+
+    if(archivo.fail())
+    {
+        cout<<"ERROR! no se pudo abrir el archivo."<<endl;
+        exit(1);
+    }
+
+    while(!archivo.eof())
+    {
+        Eventos* aux;
+        getline(archivo, texto);
+        aux->agregarDatosEventos(eventos, fechaHoy, texto);
+    }
+
+    archivo.close();
+}
 
 int sistema()
 {
@@ -48,7 +71,6 @@ int sistema()
                 cout<<eventos[0]->getFecha();
                 break;
             case 2:
-
                 break;
             case 3:
 
@@ -76,25 +98,3 @@ int main()
     return 0;
 }
 
-void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
-{
-    ifstream archivo;
-    string texto, tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
-
-    archivo.open("prueba de leerArchivos.txt", ios::in);
-
-    if(archivo.fail())
-    {
-        cout<<"ERROR! no se pudo abrir el archivo."<<endl;
-        exit(1);
-    }
-
-    while(!archivo.eof())
-    {
-        Eventos* aux;
-        getline(archivo, texto);
-        aux->agregarDatosEventos(eventos, fechaHoy, texto);
-    }
-
-    archivo.close();
-}

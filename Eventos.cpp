@@ -1,4 +1,4 @@
-#include <Asistentes.h>
+#include "Asistentes.h"
 #include "Eventos.h"
 #include <fstream>
 #include <iostream>
@@ -18,11 +18,13 @@ Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string f
 }
 Eventos::~Eventos(){}//destructor
 
-void Eventos::agregarAsistente(Asistentes* asistente)
+void Eventos::agregarAsistente(Asistentes*& asistente)
 {
     if(asistente != nullptr)
     {
-        this -> asistentes.push_back(asistente);
+        cout<<"b"<<endl;
+        this->asistentes.push_back(asistente);
+        cout<<"a"<<endl;
     }
 }
 
@@ -121,7 +123,7 @@ bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& event
 void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 {
     string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento; 
-    int eleccion;
+    int eleccion1, eleccion2, eleccion3;
     do
     {
         cout<<"\nIngrese la fecha en la que se hara el evento(Ej:28/03/2024): ";
@@ -141,8 +143,8 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             <<"\n 3) Carrete"
             <<endl
             <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
-        cin >> eleccion;
-        switch (eleccion)
+        cin >> eleccion1;
+        switch (eleccion1)
         {
             case 1:
                 tipoEvento = "boda";
@@ -157,7 +159,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
                 cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
         }
 
-    } while (eleccion != 1 && eleccion != 2 && eleccion != 3);
+    } while (eleccion1 != 1 && eleccion1 != 2 && eleccion1 != 3);
 
     cout<<"\nUbicacion del evento(Ejemplo: Coquimbo, Parte Alta): ";
     cin >> ubicacion;
@@ -170,8 +172,8 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             <<"\n 3) Almuerzo y once."
             <<endl
             <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
-        cin >> eleccion;
-        switch (eleccion)
+        cin >> eleccion2;
+        switch (eleccion2)
         {
             case 1:
                 alimentos = "Comida y bebestibles tipo coctel";
@@ -185,7 +187,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             default:
                 cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
         }
-    } while (eleccion != 1 && eleccion != 2 && eleccion != 3);
+    } while (eleccion2 != 1 && eleccion2 != 2 && eleccion2 != 3);
 
      do
     {
@@ -195,8 +197,8 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             <<"\n 3) Ochentera."
             <<endl
             <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
-        cin >> eleccion;
-        switch (eleccion)
+        cin >> eleccion3;
+        switch (eleccion3)
         {
             case 1:
                 tipoMusica = "Moderna";
@@ -210,7 +212,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             default:
                 cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
         }
-    } while (eleccion != 1 && eleccion != 2 && eleccion != 3);
+    } while (eleccion3 != 1 && eleccion3!= 2 && eleccion3 != 3);
 
     do
     {
@@ -233,9 +235,10 @@ void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, st
     getline(datosSeparar, tipoEvento, ',');
 
     if(tipoEvento != "Boda" && tipoEvento != "Reunion de Trabajo" && tipoEvento != "Carrete")
-    {
+    {        
+        Asistentes* a = aux->agregarDatosAsistentes(linea);
         cout<<"a"<<endl;
-        agregarAsistente(aux->agregarDatosAsistentes(linea));
+        agregarAsistente(a);
     }
     else
     {
@@ -244,13 +247,14 @@ void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, st
         getline(datosSeparar, fecha, ',');
         getline(datosSeparar, tipoMusica, ',');
         getline(datosSeparar, codigoEvento, ',');
+
+        if(!compararFechas(fechaHoy, fecha))
+        {
+            evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
+            eventos.push_back(evento);
+        }
     }
    
-    if(!compararFechas(fechaHoy, fecha))
-    {
-        evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
-        eventos.push_back(evento);
-    }
         
 }
 
