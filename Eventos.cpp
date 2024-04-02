@@ -23,7 +23,7 @@ void Eventos::agregarAsistente(Asistentes*& asistente)
     if(asistente != nullptr)
     {
         cout<<"b"<<endl;
-        this->asistentes.push_back(asistente);
+        this -> asistentes.push_back(asistente);
         cout<<"a"<<endl;
     }
 }
