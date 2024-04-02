@@ -15,6 +15,7 @@ Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string f
     this -> fecha = fecha;
     this -> tipoMusica =tipoMusica;
     this -> codigoEvento = codigoEvento;
+    this ->asistentes.reserve(1);
 }
 Eventos::~Eventos(){}//destructor
 
@@ -22,7 +23,7 @@ void Eventos::agregarAsistente(Asistentes*& asistente)
 {
     if(asistente != nullptr)
     {
-        cout<<asistentes.size()<<endl;
+        cout<<"b"<<endl;
         this -> asistentes.push_back(asistente);
         cout<<"a"<<endl;
     }
@@ -225,37 +226,24 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 
 void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, string linea)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
-    string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento,linea2;
-    linea2 = linea;
-    Eventos* evento;
-    Asistentes aux(30,"Estudiante","12345678-9","Juan Pérez","Amante del café","Presente");
+    string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
 
+    Eventos* evento;
+    
     stringstream datosSeparar(linea);
 
     getline(datosSeparar, tipoEvento, ',');
+    getline(datosSeparar, ubicacion, ',');
+    getline(datosSeparar, alimentos, ',');
+    getline(datosSeparar, fecha, ',');
+    getline(datosSeparar, tipoMusica, ',');
+    getline(datosSeparar, codigoEvento, ',');
 
-    if(tipoEvento != "Boda" && tipoEvento != "Reunion de Trabajo" && tipoEvento != "Carrete")
-    {        
-        Asistentes* a = aux.agregarDatosAsistentes(linea2);
-        cout<<"aaaa"<<endl;
-        agregarAsistente(a);
-    }
-    else
+    if(!compararFechas(fechaHoy, fecha))
     {
-        getline(datosSeparar, ubicacion, ',');
-        getline(datosSeparar, alimentos, ',');
-        getline(datosSeparar, fecha, ',');
-        getline(datosSeparar, tipoMusica, ',');
-        getline(datosSeparar, codigoEvento, ',');
-
-        if(!compararFechas(fechaHoy, fecha))
-        {
-            evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
-            eventos.push_back(evento);
-        }
-    }
-   
-        
+        evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
+        eventos.push_back(evento);
+    } 
 }
 
 void Eventos::actualizarDatos(vector<Eventos*>&, string)

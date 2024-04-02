@@ -9,25 +9,43 @@ using namespace std;
 
 void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
 {
-    ifstream archivo;
+    ifstream datosEvento;
     string texto, tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
 
-    archivo.open("prueba de leerArchivos.txt", ios::in);
+    datosEvento.open("prueba de leerArchivos.txt", ios::in);
 
-    if(archivo.fail())
+    if(datosEvento.fail())
     {
         cout<<"ERROR! no se pudo abrir el archivo."<<endl;
         exit(1);
     }
 
-    while(!archivo.eof())
+    while(!datosEvento.eof())
     {
         Eventos* aux;
-        getline(archivo, texto);
+        getline(datosEvento, texto);
+        aux->agregarDatosEventos(eventos, fechaHoy, texto);
+    }
+    datosEvento.close();
+
+    ifstream datosAsistentes;
+
+    datosAsistentes.open("prueba de leerArchivos.txt", ios::in);
+
+    if(datosAsistentes.fail())
+    {
+        cout<<"ERROR! no se pudo abrir el archivo."<<endl;
+        exit(1);
+    }
+
+    while(!datosAsistentes.eof())
+    {
+        Eventos* aux;
+        getline(datosAsistentes, texto);
         aux->agregarDatosEventos(eventos, fechaHoy, texto);
     }
 
-    archivo.close();
+    datosAsistentes.close();
 }
 
 int sistema()

@@ -49,7 +49,6 @@ Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es u
 {
     
     string edadString, tipoPersona, rut, nombre, datoDiferenciador, estadoAsistencia;
-    cout<<datosAsistente<<endl;
     stringstream datosSeparar(datosAsistente);
     
     getline(datosSeparar, edadString, ',');
