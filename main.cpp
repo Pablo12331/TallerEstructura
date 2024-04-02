@@ -30,7 +30,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
 
     ifstream datosAsistentes;
 
-    datosAsistentes.open("prueba de leerArchivos.txt", ios::in);
+    datosAsistentes.open("Prueba asistentes.txt", ios::in);
 
     if(datosAsistentes.fail())
     {
@@ -38,11 +38,16 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
         exit(1);
     }
 
+    for(Eventos* evento : eventos)
+    {
+        
+    }
+
     while(!datosAsistentes.eof())
     {
-        Eventos* aux;
+        Asistentes* aux;
         getline(datosAsistentes, texto);
-        aux->agregarDatosEventos(eventos, fechaHoy, texto);
+        aux->agregarDatosAsistentes(eventos, fechaHoy, texto);
     }
 
     datosAsistentes.close();
