@@ -1,0 +1,2 @@
+30,Estudiante,12345678-9,Juan Pérez,Amante del café,Presente
+22,Profesional,98765432-1,Ana Morales,Vegana,Ausente
