@@ -16,6 +16,7 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
         ~Eventos();//destructor
         void agregarAsistente(Asistentes);
         bool compararFechas(string, string);
+        bool verificarCodigoEvento(string, vector<Eventos*>&);
         bool cantidadEventosDia(vector<Eventos*>&, string);
         void crearEvento(vector<Eventos*>&, string);
         void informacionGeneral(vector<Eventos*>&);/*la idea es darle como parametro la lista de eventos que sera

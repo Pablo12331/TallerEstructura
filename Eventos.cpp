@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -90,6 +91,18 @@ bool Eventos::compararFechas(string fecha1, string fecha2)
     }
 
     return true;
+}
+
+bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& eventos)
+{
+    for(Eventos* evento : eventos)
+    {
+        if(evento->getCodigoEvento() == codigoEvento)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
@@ -186,8 +199,10 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
         }
     } while (eleccion != 1 && eleccion != 2 && eleccion != 3);
 
-    cout<<"\ncodigo evento: ";
-    cin >> codigoEvento;
+    do
+    {
+        codigoEvento = 1000 + rand() % 8999;
+    }while(verificarCodigoEvento(codigoEvento, eventos));
     
     Eventos *evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
     eventos.push_back(evento);
