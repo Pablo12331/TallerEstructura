@@ -1,9 +1,9 @@
 #include "Eventos.h"
 #include <fstream>
 #include <iostream>
-#include <string.h>
 #include <sstream>
 
+using namespace std;
 
 Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string fecha, string tipoMusica, string codigoEvento)
 {
@@ -92,8 +92,6 @@ bool Eventos::compararFechas(string fecha1, string fecha2)
     return true;
 }
 
-
-
 void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 {
     string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento; 
@@ -135,14 +133,58 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 
     } while (eleccion != 1 && eleccion != 2 && eleccion != 3);
 
-    cout<<"\nUbicacion del evento: ";
+    cout<<"\nUbicacion del evento(Ejemplo: Coquimbo, Parte Alta): ";
     cin >> ubicacion;
 
-    cout<<"\nAlimentacion: ";
-    cin >> alimentos;
+    do
+    {
+        cout<<"\nQue formatos de comida y bebestibles se solicita en el evento: \n"
+            <<"\n 1) Comida y bebestibles tipo coctel."
+            <<"\n 2) barra libre y picoteo."
+            <<"\n 3) Almuerzo y once."
+            <<endl
+            <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
+        cin >> eleccion;
+        switch (eleccion)
+        {
+            case 1:
+                alimentos = "Comida y bebestibles tipo coctel";
+                break;
+            case 2:
+                alimentos = "barra libre y picoteo";
+                break;
+            case 3:
+                alimentos = "Almuerzo y once";
+                break;
+            default:
+                cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
+        }
+    } while (eleccion != 1 && eleccion != 2 && eleccion != 3);
 
-    cout<<"\nTipo de Musica: ";
-    cin >> tipoMusica;
+     do
+    {
+        cout<<"\nQue tipo de musica se escuchara en el evento: \n"
+            <<"\n 1) Moderna."
+            <<"\n 2) Clasica."
+            <<"\n 3) Ochentera."
+            <<endl
+            <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
+        cin >> eleccion;
+        switch (eleccion)
+        {
+            case 1:
+                tipoMusica = "Moderna";
+                break;
+            case 2:
+                tipoMusica = "Clasica";
+                break;
+            case 3:
+                tipoMusica = "Ochentera";
+                break;
+            default:
+                cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
+        }
+    } while (eleccion != 1 && eleccion != 2 && eleccion != 3);
 
     cout<<"\ncodigo evento: ";
     cin >> codigoEvento;
