@@ -1,3 +1,4 @@
+#include <Asistentes.h>
 #include "Eventos.h"
 #include <fstream>
 #include <iostream>
@@ -17,9 +18,9 @@ Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string f
 }
 Eventos::~Eventos(){}//destructor
 
-void Eventos::agregarAsistente(Asistentes asistente)
+void Eventos::agregarAsistente(Asistentes* asistente)
 {
-    this -> asistentes.push_back(&asistente);
+    this -> asistentes.push_back(asistente);
 }
 
 void Eventos::informacionGeneral(vector<Eventos*>& eventos)
@@ -28,6 +29,15 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
     {
         
     }
+}
+void Eventos::setAsistentes(vector<Asistentes*>asistentes)
+{
+    this->asistentes = asistentes;
+}
+
+vector<Asistentes*> Eventos::getAsistentes()
+{
+    return this -> asistentes;
 }
 
 string Eventos::getAlimentos()
@@ -208,40 +218,39 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
     eventos.push_back(evento);
 }
 
-void Eventos::agregarDatos(vector<Eventos*>& eventos, string fechaHoy)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
+void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, string linea)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
-    ifstream archivo;
-    string texto, tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
+    string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
 
-    archivo.open("prueba de leerArchivos.txt", ios::in);
+    Eventos* evento;
+    Asistentes* aux;
 
-    if(archivo.fail())
+    stringstream datosSeparar(linea);
+
+    getline(datosSeparar, tipoEvento, ',');
+
+    if(tipoEvento != "Boda" && tipoEvento != "Reunion de Trabajo" && tipoEvento != "Carrete")
     {
-        cout<<"ERROR! no se pudo abrir el archivo."<<endl;
-        exit(1);
+        agregarAsistente(aux->agregarDatosAsistentes(linea));
     }
-
-    while(!archivo.eof())
+    else
     {
-        getline(archivo, texto);
-
-        stringstream datosSeparar(texto);
-
-        getline(datosSeparar, tipoEvento, ',');
         getline(datosSeparar, ubicacion, ',');
         getline(datosSeparar, alimentos, ',');
         getline(datosSeparar, fecha, ',');
         getline(datosSeparar, tipoMusica, ',');
         getline(datosSeparar, codigoEvento, ',');
-
-        Eventos *evento;
-        
-        if(!compararFechas(fechaHoy, fecha))
-        {
-            evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
-            eventos.push_back(evento);
-        }
-        
     }
-    archivo.close();
+   
+    if(!compararFechas(fechaHoy, fecha))
+    {
+        evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
+        eventos.push_back(evento);
+    }
+        
+}
+
+void Eventos::actualizarDatos(vector<Eventos*>&, string)
+{
+
 }

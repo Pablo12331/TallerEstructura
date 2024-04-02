@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <sstream>
 #include "Eventos.h"
 //#include "Asistentes.h"
 
@@ -15,9 +17,9 @@ int sistema()
     
     cout<<"Bienvenido. Ingrese la fecha de hoy(Ej:28/03/2024): ";
     cin >> fechaActualidad;
-
-    aux->agregarDatos(eventos, fechaActualidad);
     
+    agregarDatos(eventos, fechaActualidad);
+
     int respuesta;
     do
     {
@@ -72,4 +74,27 @@ int main()
 {
     sistema();
     return 0;
+}
+
+void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
+{
+    ifstream archivo;
+    string texto, tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
+
+    archivo.open("prueba de leerArchivos.txt", ios::in);
+
+    if(archivo.fail())
+    {
+        cout<<"ERROR! no se pudo abrir el archivo."<<endl;
+        exit(1);
+    }
+
+    while(!archivo.eof())
+    {
+        Eventos* aux;
+        getline(archivo, texto);
+        aux->agregarDatos(eventos, fechaHoy, texto);
+    }
+
+    archivo.close();
 }

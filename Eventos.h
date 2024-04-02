@@ -14,7 +14,7 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
     public:
         Eventos(string, string, string, string, string, string);
         ~Eventos();//destructor
-        void agregarAsistente(Asistentes);
+        void agregarAsistente(Asistentes*);
         bool compararFechas(string, string);
         bool verificarCodigoEvento(string, vector<Eventos*>&);
         bool cantidadEventosDia(vector<Eventos*>&, string);
@@ -22,7 +22,10 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
         void informacionGeneral(vector<Eventos*>&);/*la idea es darle como parametro la lista de eventos que sera
         creada en el main y poder ir tirando la informacion que piden o al menos lo que es la lista de eventos programados y la lista 
         de asistentes registrados por cada evento*/
-        void agregarDatos(vector<Eventos*>&, string);
+        void agregarDatosEventos(vector<Eventos*>&, string, string);
+        void actualizarDatos(vector<Eventos*>&, string);
+        void setAsistentes(vector<Asistentes*>);
+        vector<Asistentes*> getAsistentes();
         string getAlimentos();
         string getFecha();
         string getTipoMusica();
