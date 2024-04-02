@@ -22,7 +22,7 @@ void Eventos::agregarAsistente(Asistentes*& asistente)
 {
     if(asistente != nullptr)
     {
-        cout<<"b"<<endl;
+        cout<<asistentes.size()<<endl;
         this -> asistentes.push_back(asistente);
         cout<<"a"<<endl;
     }
@@ -225,10 +225,10 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 
 void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, string linea)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
-    string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
-
+    string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento,linea2;
+    linea2 = linea;
     Eventos* evento;
-    Asistentes* aux;
+    Asistentes aux(30,"Estudiante","12345678-9","Juan Pérez","Amante del café","Presente");
 
     stringstream datosSeparar(linea);
 
@@ -236,8 +236,8 @@ void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, st
 
     if(tipoEvento != "Boda" && tipoEvento != "Reunion de Trabajo" && tipoEvento != "Carrete")
     {        
-        Asistentes* a = aux->agregarDatosAsistentes(linea);
-        cout<<"a"<<endl;
+        Asistentes* a = aux.agregarDatosAsistentes(linea2);
+        cout<<"aaaa"<<endl;
         agregarAsistente(a);
     }
     else
