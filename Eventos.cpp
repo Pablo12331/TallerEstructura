@@ -9,8 +9,8 @@ using namespace std;
 
 Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string fecha, string tipoMusica, string codigoEvento)
 {
-    this-> tipoEvento = tipoEvento;
-    this-> ubicacion = ubicacion;
+    this -> tipoEvento = tipoEvento;
+    this -> ubicacion = ubicacion;
     this -> alimentos = alimentos;
     this -> fecha = fecha;
     this -> tipoMusica =tipoMusica;
@@ -31,10 +31,22 @@ void Eventos::agregarAsistente(Asistentes*& asistente)
 
 void Eventos::informacionGeneral(vector<Eventos*>& eventos)
 {
+
+    cout<<"Informes y datos:"<<endl;
+    cout<<"Lista de eventos planeados:"<<endl;
     for(Eventos* evento : eventos)
     {
-        
+        cout<<evento->getTipoEvento()<<" "<<evento->getUbicacion()<<" "<<evento->getFecha()<<" "<<evento->getCodigoEvento()<<" "<<evento->getTipoMusica()<<" "<<evento->getAlimentos()<<endl;
     }
+    cout<<""<<endl;
+}
+string Eventos::getTipoEvento()
+{
+    return this -> tipoEvento;
+}
+string Eventos::getUbicacion()
+{
+    return this -> ubicacion;
 }
 void Eventos::setAsistentes(vector<Asistentes*>asistentes)
 {

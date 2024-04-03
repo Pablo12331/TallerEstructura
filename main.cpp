@@ -60,7 +60,7 @@ int sistema()
 
     vector<Eventos*> eventos;
     Eventos* aux;
-    
+
     cout<<"Bienvenido. Ingrese la fecha de hoy(Ej:28/03/2024): ";
     cin >> fechaActualidad;
 
@@ -94,14 +94,16 @@ int sistema()
                 cout<<eventos[0]->getFecha();
                 break;
             case 2:
+                
                 break;
             case 3:
 
                 break;
             case 4:
-
+                aux->informacionGeneral(eventos);
                 break;
             case 5:
+                
                 
                 break;
             case 6:
