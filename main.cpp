@@ -47,7 +47,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
     {
         Asistentes* aux;
         getline(datosAsistentes, texto);
-        aux->agregarDatosAsistentes(eventos, fechaHoy, texto);
+        aux->agregarDatosAsistentes(texto);
     }
 
     datosAsistentes.close();
