@@ -1,3 +1,5 @@
 Carrete,Coquimboparte Alta,ali,28/03/2023,tipoMusicaEvento,codigo
 Carrete,Coquimboparte Alta,ali,28/03/2026,tipoMusicaEvento,codigo
 Carrete,Coquimboparte Alta,ali,28/03/2027,tipoMusicaEvento,codigo
+Boda,Coquimboparte Alta,ali,28/03/2027,tipoMusicaEvento,codigo
+Reunion de Trabajo,Coquimboparte Alta,ali,28/03/2027,tipoMusicaEvento,codigo

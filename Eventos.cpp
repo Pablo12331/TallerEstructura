@@ -23,9 +23,7 @@ void Eventos::agregarAsistente(Asistentes*& asistente)
 {
     if(asistente != nullptr)
     {
-        cout<<"b"<<endl;
         this -> asistentes.push_back(asistente);
-        cout<<"a"<<endl;
     }
 }
 
@@ -34,28 +32,51 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
 
     cout<<"Informes y datos:"<<endl;
     cout<<"Lista de eventos planeados:"<<endl;
+
     int contBoda=0;
     int contCarre=0;
     int contReu=0;
     int cantiBoda=0;
     int cantiCarre=0;
     int cantiReu=0;
+    Asistentes* a;
     for(Eventos* evento : eventos)
     {
         cout<<evento->getTipoEvento()<<" "<<evento->getUbicacion()<<" "<<evento->getFecha()<<" "<<evento->getCodigoEvento()<<" "<<evento->getTipoMusica()<<" "<<evento->getAlimentos()<<endl;
-    }
-    cout<<" "<<endl;
-    cout<<"Asistentes de cada evento: "<<endl; 
-    for(Eventos* evento : eventos)
-    {
-        cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<endl;
-        for(Asistentes* asistente: evento->getAsistentes())
+        if(evento->getTipoEvento() == "Carrete")
         {
-            cout<<asistente->getNombre()<<asistente->getRut()<<endl;
+            contCarre += 1;
+            evento->agregarAsistente(a);
+            cantiCarre += evento->getAsistentes().size();
+            cout<<contCarre<<" a "<< cantiCarre<<endl;
         }
-        cout<<""<<endl;
+        else if(evento->getTipoEvento() == "Boda")
+        {
+            contBoda += 1;
+            evento->agregarAsistente(a);
+            cantiBoda += evento->getAsistentes().size();
+            cout<<contBoda<<" a "<< cantiBoda<<endl;
+        }
+        else if(evento->getTipoEvento() == "Reunion de Trabajo")
+        {
+            contReu += 1;
+            evento->agregarAsistente(a);
+            cantiReu += evento->getAsistentes().size();
+            cout<<contReu<<" a "<< cantiReu<<endl;
+        }
     }
-    cout<<"Promedio de asistentes por tipo de evento: "<<endl;
+    cout<<"\n";
+    // cout<<"Asistentes de cada evento: "<<endl; 
+    // for(Eventos* evento : eventos)
+    // {
+    //     cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<endl;
+    //     for(Asistentes* asistente: evento->getAsistentes())
+    //     {
+    //         cout<<asistente->getNombre()<<asistente->getRut()<<endl;
+    //     }
+    //     cout<<""<<endl;
+    // }
+    // cout<<"Promedio de asistentes por tipo de evento: "<<endl;
     
 
 }
@@ -155,7 +176,7 @@ bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& event
 void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 {
     string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento; 
-    int eleccion1, eleccion2, eleccion3;
+    string eleccion1, eleccion2, eleccion3;
     do
     {
         cout<<"\nIngrese la fecha en la que se hara el evento(Ej:28/03/2024): ";
@@ -170,19 +191,19 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
     do
     {
         cout<<"\nDe que tipo quiere que sea su evento: \n"
-            <<"\n 1) boda"
+            <<"\n 1) Boda"
             <<"\n 2) Reunion de Trabajo"
             <<"\n 3) Carrete"
             <<endl
             <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
         cin >> eleccion1;
-        switch (eleccion1)
+        switch (stoi(eleccion1))
         {
             case 1:
-                tipoEvento = "boda";
+                tipoEvento = "Boda";
                 break;
             case 2:
-                tipoEvento = "Reunion de trabajo";
+                tipoEvento = "Reunion de Trabajo";
                 break;
             case 3:
                 tipoEvento = "Carrete";
@@ -191,7 +212,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
                 cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
         }
 
-    } while (eleccion1 != 1 && eleccion1 != 2 && eleccion1 != 3);
+    } while (eleccion1 != "1" && eleccion1 != "2" && eleccion1 != "3");
 
     cout<<"\nUbicacion del evento(Ejemplo: Coquimbo, Parte Alta): ";
     cin >> ubicacion;
@@ -205,7 +226,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             <<endl
             <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
         cin >> eleccion2;
-        switch (eleccion2)
+        switch (stoi(eleccion2))
         {
             case 1:
                 alimentos = "Comida y bebestibles tipo coctel";
@@ -219,7 +240,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             default:
                 cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
         }
-    } while (eleccion2 != 1 && eleccion2 != 2 && eleccion2 != 3);
+    } while (eleccion2 != "1" && eleccion2 != "2" && eleccion2 != "3");
 
      do
     {
@@ -230,7 +251,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             <<endl
             <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
         cin >> eleccion3;
-        switch (eleccion3)
+        switch (stoi(eleccion3))
         {
             case 1:
                 tipoMusica = "Moderna";
@@ -244,7 +265,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             default:
                 cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
         }
-    } while (eleccion3 != 1 && eleccion3!= 2 && eleccion3 != 3);
+    } while (eleccion3 != "1"&& eleccion3!= "2" && eleccion3 != "3");
 
     do
     {
