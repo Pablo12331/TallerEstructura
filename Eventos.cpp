@@ -34,11 +34,43 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
 
     cout<<"Informes y datos:"<<endl;
     cout<<"Lista de eventos planeados:"<<endl;
+    int contBoda=0;
+    int contCarre=0;
+    int contReu=0;
+    int cantiBoda=0;
+    int cantiCarre=0;
+    int cantiReu=0;
     for(Eventos* evento : eventos)
     {
+        if(evento->getTipoEvento() == "Carrete")
+        {
+            contCarre++;
+            
+        }else if(evento->getTipoEvento() == "Boda")
+        {
+            contBoda++;
+
+        }else if(evento->getTipoEvento() == "Reunion de trabajo")
+        {
+            contReu++;
+
+        }
         cout<<evento->getTipoEvento()<<" "<<evento->getUbicacion()<<" "<<evento->getFecha()<<" "<<evento->getCodigoEvento()<<" "<<evento->getTipoMusica()<<" "<<evento->getAlimentos()<<endl;
     }
-    cout<<""<<endl;
+    cout<<" "<<endl;
+    cout<<"Asistentes de cada evento: "<<endl; 
+    for(Eventos* evento : eventos)
+    {
+        cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<endl;
+        for(Asistentes* asistente: evento->getAsistentes())
+        {
+            cout<<asistente->getNombre()<<asistente->getRut()<<endl;
+        }
+        cout<<""<<endl;
+    }
+    cout<<"Promedio de asistentes por tipo de evento: "<<endl;
+    
+
 }
 string Eventos::getTipoEvento()
 {
