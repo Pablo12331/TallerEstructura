@@ -42,19 +42,6 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
     int cantiReu=0;
     for(Eventos* evento : eventos)
     {
-        if(evento->getTipoEvento() == "Carrete")
-        {
-            contCarre++;
-            
-        }else if(evento->getTipoEvento() == "Boda")
-        {
-            contBoda++;
-
-        }else if(evento->getTipoEvento() == "Reunion de trabajo")
-        {
-            contReu++;
-
-        }
         cout<<evento->getTipoEvento()<<" "<<evento->getUbicacion()<<" "<<evento->getFecha()<<" "<<evento->getCodigoEvento()<<" "<<evento->getTipoMusica()<<" "<<evento->getAlimentos()<<endl;
     }
     cout<<" "<<endl;
