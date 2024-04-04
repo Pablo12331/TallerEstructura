@@ -162,9 +162,10 @@ bool Eventos::compararFechas(string fecha1, string fecha2)
 void Eventos::registrarAsistente(vector<Eventos*>& eventos)
 {
     Asistentes* aux;
-
+    cout<<endl;
     for(Eventos* evento : eventos)
     {
+        cout<<"Tipo de Evento: "<<evento->getTipoEvento() << " | Codigo de Evento: " << evento->getCodigoEvento() << endl;
     }
 }
 
