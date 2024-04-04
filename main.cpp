@@ -9,11 +9,21 @@ using namespace std;
 
 void actualizarDatos(vector<Eventos*>& eventos)
 {
-    string actualizacionEventos, actualizacionAsistentes;
+    Eventos* aux;
+    string actualizacionEventos = "", actualizacionAsistentes = "";
+    int contadorSaltoLinea;
     for(Eventos* evento : eventos)
     {
-        
+        if(contadorSaltoLinea < eventos.size())
+        {
+            actualizacionEventos += evento->informacionCompletaEventos() + "\n";
+        }
+        else
+        {
+            actualizacionEventos += evento->informacionCompletaEventos();
+        }
     }
+    aux->actualizarDatosEventos(actualizacionEventos);
 }
 
 void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
@@ -126,6 +136,7 @@ int sistema()
 
     }
     while(respuesta != 6);
+    actualizarDatos(eventos);
     return 0;
 }
 int main()

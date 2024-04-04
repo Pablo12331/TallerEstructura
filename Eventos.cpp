@@ -311,7 +311,9 @@ void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, st
     } 
 }
 
-void Eventos::actualizarDatos(vector<Eventos*>&, string)
+void Eventos::actualizarDatosEventos(string eventosActualizados)
 {
-    
+    ofstream datosEventos("prueba de leerArchivos.txt");
+    datosEventos << eventosActualizados;
+    datosEventos.close();
 }
