@@ -25,12 +25,33 @@ bool verificarFecha(string fecha)
     }
 }
 
-void actualizarDatos(vector<Eventos*>& eventos)
+void actualizarDatosAsistentes(vector<Asistentes*>& asistentes)
+{
+    Asistentes* auxAsistente;
+    string actualizacionAsistentes = "";
+    int contadorSaltoLinea = 0;
+
+    for(Asistentes* asistente : asistentes)
+    {
+        if(contadorSaltoLinea < asistentes.size() - 1)
+        {
+            actualizacionAsistentes += asistente->informacionCompletaAsistente() + "\n";
+        }
+        else
+        {
+            actualizacionAsistentes += asistente->informacionCompletaAsistente();
+        }
+        contadorSaltoLinea++;
+    }
+    auxAsistente->actualizarDatosAsistentes(actualizacionAsistentes);
+}
+
+void actualizarDatosEventos(vector<Eventos*>& eventos)
 {
     Eventos* auxEventos;
-    Asistentes* auxAsistentes;
-    string actualizacionEventos = "", actualizacionAsistentes = "";
-    int contadorSaltoLinea = 0, contadorSaltoLinea2 = 0;
+    string actualizacionEventos = "";
+    int contadorSaltoLinea = 0;
+    vector<Asistentes*> asistentes;
     for(Eventos* evento : eventos)
     {
         if(contadorSaltoLinea < eventos.size() - 1)
@@ -41,37 +62,24 @@ void actualizarDatos(vector<Eventos*>& eventos)
         {
             actualizacionEventos += evento->informacionCompletaEventos();
         }
-        
-        contadorSaltoLinea2 = 0;
 
         for(Asistentes* asistente : evento->getAsistentes())
         {
-            if(contadorSaltoLinea2 != 0)
-            {
-                cout<<"a"<<endl;
-                actualizacionAsistentes = actualizacionAsistentes + "\n" + asistente->informacionCompletaAsistente();
-                cout<<actualizacionAsistentes<<endl;
-            }
-            else
-            {
-                cout<<"b"<<endl;
-                actualizacionAsistentes = actualizacionAsistentes + asistente->informacionCompletaAsistente();
-                cout<<actualizacionAsistentes<<endl;
-            }
-            contadorSaltoLinea2++;
+            asistentes.push_back(asistente);
         }
-        ++contadorSaltoLinea;
-    }
-    //cout<<actualizacionAsistentes<<endl;
-    auxEventos->actualizarDatosEventos(actualizacionEventos);
-    auxAsistentes->actualizarDatosAsistentes(actualizacionAsistentes);
 
+        contadorSaltoLinea++;
+    }
+    auxEventos->actualizarDatosEventos(actualizacionEventos);
+    actualizarDatosAsistentes(asistentes);
 }
+
 
 void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
 {
+    string texto;
+    
     ifstream datosEvento;
-    string texto, tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
 
     datosEvento.open("prueba de leerArchivos.txt", ios::in);
 
@@ -81,10 +89,9 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
         exit(1);
     }
 
-    while(!datosEvento.eof())
+    while(getline(datosEvento, texto))
     {
         Eventos* aux;
-        getline(datosEvento, texto);
         aux->agregarDatosEventos(eventos, fechaHoy, texto);
     }
     datosEvento.close();
@@ -99,12 +106,10 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
         exit(1);
     }  
 
-    while(!datosAsistentes.eof())
+    while(getline(datosAsistentes, texto))
     {
         Asistentes* aux;
         Asistentes* asistente;
-        getline(datosAsistentes, texto);
-        //cout<<texto<<endl;
         asistente = aux->agregarDatosAsistentes(texto);
 
         for(Eventos* evento : eventos)
@@ -113,19 +118,13 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
             {
                 break;
             }
-
             else if(stoi(evento->getCodigoEvento()) == stoi(asistente->getCodigoEvento()))
             {
                 evento->agregarAsistente(asistente);
             }
         }
     }
-
-    for(Eventos* evento : eventos)
-    {
-        cout<<evento->getAsistentes().size()<<endl;
-    }
-
+    
     datosAsistentes.close();
 }
 
@@ -144,8 +143,6 @@ int sistema()
     
 
     agregarDatos(eventos, fechaActualidad);
-
-    cout<<eventos.size()<<endl;
 
     int respuesta;
     do
@@ -191,7 +188,7 @@ int sistema()
 
     }
     while(respuesta != 6);
-    actualizarDatos(eventos);
+    actualizarDatosEventos(eventos);
     return 0;
 }
 int main()

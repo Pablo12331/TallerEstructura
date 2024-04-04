@@ -1,4 +1,3 @@
-#include "Asistentes.h"
 #include "Eventos.h"
 #include <fstream>
 #include <iostream>
@@ -243,6 +242,8 @@ void Eventos::registrarAsistente(vector<Eventos*>& eventos)
 
     } while (!verificarCodigoEvento(codigoEvento, eventos));
 
+    
+
     //aqui con el aux deberiamos llamar una funcion en Asistentes para pedir el numero de asistentes que se ingresaran y luego ir agregandolos a la lista
 }
 
@@ -360,8 +361,6 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
         mt19937 gen(rd());
         uniform_int_distribution<> dis(1000, 9999);
         codigoDelEvento = dis(gen);
-        cout<< codigoDelEvento <<endl;
-
     }while(verificarCodigoEvento(to_string(codigoDelEvento), eventos));
     
     cin.ignore(numeric_limits<streamsize>::max(), '\n');

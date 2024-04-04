@@ -52,6 +52,11 @@ string Asistentes::informacionCompletaAsistente()
     return edad + "," + this->tipoPersona + "," + this->rut + "," + this->nombre + "," + this->datoDiferenciador + "," + this->codigoEvento;
 }
 
+void Asistentes::crearAsistente()
+{
+    
+}
+
 int Asistentes::sumaEdades(vector<Asistentes*>& asistentes)
 {
     int sumaEdades = 0;
@@ -87,6 +92,7 @@ Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es u
     }
 
 }
+
 
 void Asistentes::actualizarDatosAsistentes(string actualizacionAsistentes)
 {
