@@ -4,6 +4,8 @@
 #include <iostream>
 #include <sstream>
 #include <cstdlib>
+#include <random>
+#include<string.h>
 
 using namespace std;
 
@@ -167,11 +169,28 @@ string Eventos::informacionCompletaEventos()
 void Eventos::registrarAsistente(vector<Eventos*>& eventos)
 {
     Asistentes* aux;
+    string codigoEvento;
     cout<<endl;
     for(Eventos* evento : eventos)
     {
         cout<<"Tipo de Evento: "<<evento->getTipoEvento() << " | Codigo de Evento: " << evento->getCodigoEvento() << endl;
     }
+    do
+    {
+        cout<<"\nInserte el codigo del evento al cual quiere registrar asistentes: ";
+        cin >> codigoEvento; 
+        if(!verificarCodigoEvento(codigoEvento, eventos))
+        {
+            cout<<"ERROR! El codigo de evento ingresado es erroneo, coloque uno de los mostrados anteriormente."<<endl;
+        }
+        else
+        {
+            break;
+        }
+
+    } while (!verificarCodigoEvento(codigoEvento, eventos));
+
+    //aqui con el aux deberiamos llamar una funcion en Asistentes para pedir el numero de asistentes que se ingresaran y luego ir agregandolos a la lista
 }
 
 bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& eventos)
@@ -188,8 +207,9 @@ bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& event
 
 void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 {
+    int codigoDelEvento;
     string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento; 
-    string eleccion1, eleccion2, eleccion3;
+    string eleccionTipoEvento, eleccionAlimentos, eleccionTipoMusica;
     do
     {
         cout<<"\nIngrese la fecha en la que se hara el evento(Ej:28/03/2024): ";
@@ -209,8 +229,9 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             <<"\n 3) Carrete"
             <<endl
             <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
-        cin >> eleccion1;
-        switch (stoi(eleccion1))
+        cin >> eleccionTipoEvento;
+        int opcion = stoi(eleccionTipoEvento);
+        switch (opcion)
         {
             case 1:
                 tipoEvento = "Boda";
@@ -225,10 +246,8 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
                 cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
         }
 
-    } while (eleccion1 != "1" && eleccion1 != "2" && eleccion1 != "3");
+    } while (eleccionTipoEvento != "1" && eleccionTipoEvento != "2" && eleccionTipoEvento != "3");
 
-    cout<<"\nUbicacion del evento(Ejemplo: Coquimbo, Parte Alta): ";
-    cin >> ubicacion;
 
     do
     {
@@ -238,8 +257,9 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             <<"\n 3) Almuerzo y once."
             <<endl
             <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
-        cin >> eleccion2;
-        switch (stoi(eleccion2))
+        cin >> eleccionAlimentos;
+        int opcion = stoi(eleccionAlimentos);
+        switch (opcion)
         {
             case 1:
                 alimentos = "Comida y bebestibles tipo coctel";
@@ -253,7 +273,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             default:
                 cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
         }
-    } while (eleccion2 != "1" && eleccion2 != "2" && eleccion2 != "3");
+    } while (eleccionAlimentos != "1" && eleccionAlimentos != "2" && eleccionAlimentos != "3");
 
      do
     {
@@ -263,8 +283,9 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             <<"\n 3) Ochentera."
             <<endl
             <<"\n Coloque su opciones aqui(Ejemplo: 1): ";
-        cin >> eleccion3;
-        switch (stoi(eleccion3))
+        cin >> eleccionTipoMusica;
+        int opcion = stoi(eleccionTipoMusica);
+        switch (opcion)
         {
             case 1:
                 tipoMusica = "Moderna";
@@ -278,13 +299,25 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
             default:
                 cout<<"La eleccion seleccionada es incorrecta, coloque una de las que aparece en pantalla.";
         }
-    } while (eleccion3 != "1"&& eleccion3!= "2" && eleccion3 != "3");
+    } while (eleccionTipoMusica != "1"&& eleccionTipoMusica!= "2" && eleccionTipoMusica != "3");
 
     do
     {
-        codigoEvento = 1000 + rand() % 8999;
-    }while(verificarCodigoEvento(codigoEvento, eventos));
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<> dis(1000, 9999);
+        codigoDelEvento = dis(gen);
+        cout<< codigoDelEvento <<endl;
+
+    }while(verificarCodigoEvento(to_string(codigoDelEvento), eventos));
     
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    cout<<"\nUbicacion del evento(Ejemplo: Coquimbo Parte Alta): ";
+    getline(cin, ubicacion);
+
+    codigoEvento = to_string(codigoDelEvento);
+
     Eventos *evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
     eventos.push_back(evento);
 }

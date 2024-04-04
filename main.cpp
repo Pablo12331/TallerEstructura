@@ -7,14 +7,33 @@
 
 using namespace std;
 
+bool verificarFecha(string fecha)
+{
+    string dia = "", mes = "", year = "";
+    stringstream separarFechas(fecha);
+    getline(separarFechas, dia, '/');
+    getline(separarFechas, mes, '/');
+    getline(separarFechas, year, '/');
+    if(dia == "" || mes == "" || year == "")
+    {
+        cout<<"ERROR! El formato de la fecha ingresada es incorrecto siga el ejemplo por favor."<<endl;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 void actualizarDatos(vector<Eventos*>& eventos)
 {
-    Eventos* aux;
+    Eventos* auxEventos;
+    Asistentes* auxAsistentes;
     string actualizacionEventos = "", actualizacionAsistentes = "";
-    int contadorSaltoLinea;
+    int contadorSaltoLinea, contadorSaltoLinea2;
     for(Eventos* evento : eventos)
     {
-        if(contadorSaltoLinea < eventos.size())
+        if(contadorSaltoLinea < eventos.size() - 1)
         {
             actualizacionEventos += evento->informacionCompletaEventos() + "\n";
         }
@@ -22,8 +41,24 @@ void actualizarDatos(vector<Eventos*>& eventos)
         {
             actualizacionEventos += evento->informacionCompletaEventos();
         }
+        contadorSaltoLinea++;
+
+        for(Asistentes* asistente : evento->getAsistentes())
+        {
+            if(contadorSaltoLinea2 < evento->getAsistentes().size() - 1)
+            {
+                actualizacionAsistentes += asistente->informacionCompletaAsistente() + "\n";
+            }
+            else
+            {
+                actualizacionAsistentes += asistente->informacionCompletaAsistente();
+            }
+            contadorSaltoLinea2++;
+        }
     }
-    aux->actualizarDatosEventos(actualizacionEventos);
+    auxEventos->actualizarDatosEventos(actualizacionEventos);
+    auxAsistentes->actualizarDatosAsistentes(actualizacionAsistentes);
+
 }
 
 void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
@@ -87,15 +122,19 @@ int sistema()
 
     vector<Eventos*> eventos;
     Eventos* aux;
-
-    cout<<"Bienvenido. Ingrese la fecha de hoy(Ej:28/03/2024): ";
-    cin >> fechaActualidad;
+    do
+    {
+        cout<<"Bienvenido. Ingrese la fecha de hoy(Ej:28/03/2024): ";
+        cin >> fechaActualidad;
+    } while (verificarFecha(fechaActualidad));
+    
 
     agregarDatos(eventos, fechaActualidad);
 
     int respuesta;
     do
     {
+        respuesta = 0;
         cout<<"\nEscoja una opción válida: "<<endl<<"1)Crear nuevo evento"<<endl<<"2)Registrar asistentes"<<
         endl<<"3)Revisión de Asistentes"<<endl<<"4)Informes de eventos"<<endl
         <<"5)Cancelar evento"<<endl<<"6)Salir."<<endl<<"\nColoque su opciones aqui(Ejemplo: 1): ";
