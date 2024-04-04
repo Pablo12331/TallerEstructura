@@ -1,3 +1,4 @@
+#include "Eventos.h"
 #include "Asistentes.h"
 #include <fstream>
 #include <string.h>
@@ -44,6 +45,9 @@ string Asistentes::getCodigoEvento()
 {
     return this -> codigoEvento;
 }
+
+string Asistentes::informacionCompletaAsistente(){return "";}
+
 Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
     
@@ -69,3 +73,11 @@ Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es u
     }
 
 }
+
+void Asistentes::actualizarDatosAsistentes(string actualizacionAsistentes)
+{
+    ofstream datosAsistentes("Prueba Asistentes.txt");
+    datosAsistentes << actualizacionAsistentes;
+}
+
+

@@ -18,6 +18,7 @@ class Asistentes
         string getNombre();
         string getDatoDiferenciador();
         string getCodigoEvento();
-
+        string informacionCompletaAsistente();
+        void actualizarDatosAsistentes(string);
         Asistentes* agregarDatosAsistentes(string);
 };
