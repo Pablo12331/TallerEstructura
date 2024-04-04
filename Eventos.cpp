@@ -308,5 +308,5 @@ void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, st
 
 void Eventos::actualizarDatos(vector<Eventos*>&, string)
 {
-
+    
 }

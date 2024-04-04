@@ -6,14 +6,13 @@
 
 using namespace std;
 
-Asistentes::Asistentes(int edad, string tipoPersona, string rut, string nombre, string datoDiferenciador, string estadoAsistencia, string codigoEvento)
+Asistentes::Asistentes(int edad, string tipoPersona, string rut, string nombre, string datoDiferenciador, string codigoEvento)
 {
     this -> edad = edad;
     this -> tipoPersona = tipoPersona;
     this -> rut = rut;
     this -> nombre = nombre;
     this -> datoDiferenciador =datoDiferenciador;
-    this -> estadoAsistencia = estadoAsistencia;
     this -> codigoEvento = codigoEvento;
 }
 
@@ -41,17 +40,9 @@ string Asistentes::getDatoDiferenciador()
 {
     return this -> datoDiferenciador;
 }
-string Asistentes::getEstadoAsistencia()
-{
-    return this -> estadoAsistencia;
-}
 string Asistentes::getCodigoEvento()
 {
     return this -> codigoEvento;
-}
-void Asistentes::setEstadoAsistencia(string estadoAsistencia)
-{
-    this -> estadoAsistencia = estadoAsistencia;
 }
 Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
@@ -64,7 +55,6 @@ Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es u
     getline(datosSeparar, rut, ',');
     getline(datosSeparar, nombre, ',');
     getline(datosSeparar, datoDiferenciador, ',');
-    getline(datosSeparar, estadoAsistencia, ',');
     getline(datosSeparar, codigoEvento, ',');
 
     int edad = stoi(edadString);
@@ -74,7 +64,7 @@ Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es u
     }
     else
     {
-        Asistentes* asistente = new Asistentes(edad, tipoPersona, rut, nombre, datoDiferenciador, estadoAsistencia, codigoEvento);
+        Asistentes* asistente = new Asistentes(edad, tipoPersona, rut, nombre, datoDiferenciador, codigoEvento);
         return asistente;
     }
 
