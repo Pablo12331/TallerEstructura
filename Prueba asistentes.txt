@@ -1,5 +1,5 @@
 29,novio,192837465,Alejandro Mora,familiar,participa,5678
-17,novia,987654321,Carla Espinoza,familiar,participa,5678
+18,novia,987654321,Carla Espinoza,familiar,participa,5678
 31,padrino,123456789,Roberto Juárez,invita doespecial,participa,5678
 33,madrina,987654312,Lucía Gómez,invitado especial,participa,5678
 28,invitado,654321789,Omar Vargas,otro,participa,5678

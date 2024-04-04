@@ -45,19 +45,16 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
         cout<<evento->getTipoEvento()<<" "<<evento->getUbicacion()<<" "<<evento->getFecha()<<" "<<evento->getCodigoEvento()<<" "<<evento->getTipoMusica()<<" "<<evento->getAlimentos()<<endl;
         if(evento->getTipoEvento() == "Carrete")
         {
-            cout<<"a"<<endl;
             contCarre += 1;
             cantiCarre += evento->getAsistentes().size();
         }
         else if(evento->getTipoEvento() == "Boda")
         {
-            cout<<"b"<<endl;
             contBoda += 1;
             cantiBoda += evento->getAsistentes().size();
         }
         else if(evento->getTipoEvento() == "Reunion de Trabajo")
         {
-            cout<<"c"<<endl;
             contReu += 1;
             cantiReu += evento->getAsistentes().size();
         }
