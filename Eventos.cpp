@@ -35,9 +35,15 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
     cout<<"\nInformes y datos:"<<endl;
     cout<<"\nLista de eventos planeados:\n"<<endl;
 
+    vector<int> ciudadesCont;
+    vector<string> ciudadesNombre;
+    int ciudadesAux=0;
+    string ciudNombres;
+
     int contBoda = 0, contCarre = 0, contReu = 0;
     int cantiBoda = 0, cantiCarre = 0, cantiReu = 0;
     int contEdadBoda = 0,  contEdadCarrete = 0, contEdadReu = 0; 
+
     Asistentes* a;
     for(Eventos* evento : eventos)
     {
@@ -65,6 +71,30 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
             vector<Asistentes*> listaAsistentes = evento->getAsistentes();
             contEdadReu += aux->sumaEdades(listaAsistentes);
         }
+
+        if(ciudadesNombre.size() == 0)
+        {
+            ciudadesNombre.push_back(evento->getUbicacion());
+            ciudadesCont.push_back(1);
+        }
+        else 
+        {
+            for(string ciudades : ciudadesNombre) 
+            {
+                if(evento->getUbicacion() == ciudades)
+                {
+                    ciudadesAux++;
+                }
+
+            }
+            if(ciudadesAux == 0)
+            {
+                ciudadesNombre.push_back(evento->getUbicacion());
+                ciudadesCont.push_back(1);
+            }
+            ciudadesAux = 0;
+        }
+
     }
     cout<<"\n";
 
@@ -89,7 +119,7 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
         <<"\nCantidad de Reuniones de trabajo: "<< contReu;
     cout<<""<<endl;
     cout<<"\nUbicación más usada en eventos:"
-        <<"\n"<<cantiCarre/contCarre;
+        <<"\n";
 
     cout<<"\nPromedio de asistentes por evento: "
         <<"\nPromedio Asistencia Carretes: "<< cantiCarre/contCarre

@@ -1,6 +1,6 @@
 Carrete,Arica parte Norte,Comida y bebestibles tipo coctel,12/05/2023,Moderna,1234
 Boda,Puerto Montt parte Baja,barra libre y picoteo,03/08/2024,Clasica,5678
-Reunion de Trabajo,La Serena parte Alta,Almuerzo y once,25/11/2025,Ochentera,9012
+Reunion de Trabajo,La Serena la florida,Almuerzo y once,25/11/2025,Ochentera,9012
 Carrete,Valparaíso parte Centro,Comida y bebestibles tipo coctel,17/02/2026,Moderna,3456
 Boda,Talca parte Sur,barra libre y picoteo,09/06/2027,Clasica,7890
 Reunion de Trabajo,Los Ángeles parte Este,Almuerzo y once,22/10/2028,Ochentera,2345
