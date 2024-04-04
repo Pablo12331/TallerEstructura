@@ -44,7 +44,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
         Asistentes* asistente;
         getline(datosAsistentes, texto);
         asistente = aux->agregarDatosAsistentes(texto);
-        
+
         for(int i = 0; i < eventos.size() - 1; ++i)
         {
             if(asistente == nullptr)
@@ -111,7 +111,6 @@ int sistema()
                 aux->informacionGeneral(eventos);
                 break;
             case 5:
-                
                 
                 break;
             case 6:

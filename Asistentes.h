@@ -20,5 +20,6 @@ class Asistentes
         string getEstadoAsistencia();
         string getCodigoEvento();
         void setEstadoAsistencia(string);
+        
         Asistentes* agregarDatosAsistentes(string);
 };

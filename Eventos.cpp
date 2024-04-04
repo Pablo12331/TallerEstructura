@@ -159,6 +159,11 @@ bool Eventos::compararFechas(string fecha1, string fecha2)
     return true;
 }
 
+void Eventos::registrarAsistente(vector<Eventos*>&, string)
+{
+    
+}
+
 bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& eventos)
 {
     for(Eventos* evento : eventos)
