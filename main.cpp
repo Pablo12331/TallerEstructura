@@ -45,15 +45,15 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
         getline(datosAsistentes, texto);
         asistente = aux->agregarDatosAsistentes(texto);
 
-        for(int i = 0; i < eventos.size() - 1; ++i)
+        for(Eventos* evento : eventos)
         {
             if(asistente == nullptr)
             {
                 break;
             }
-            else if(stoi(eventos[i]->getCodigoEvento()) == stoi(asistente->getCodigoEvento()))
+            else if(stoi(evento->getCodigoEvento()) == stoi(asistente->getCodigoEvento()))
             {
-                eventos[i]->agregarAsistente(asistente);
+                evento->agregarAsistente(asistente);
             }
         }
     }
