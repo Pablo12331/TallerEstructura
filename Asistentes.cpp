@@ -46,7 +46,10 @@ string Asistentes::getCodigoEvento()
     return this -> codigoEvento;
 }
 
-string Asistentes::informacionCompletaAsistente(){return "";}
+string Asistentes::informacionCompletaAsistente()
+{
+    return to_string(this->edad) + "," + this->tipoPersona + "," + this->rut + "," + this->nombre + "," + this->datoDiferenciador + "," + this->codigoEvento;
+}
 
 Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
@@ -78,6 +81,7 @@ void Asistentes::actualizarDatosAsistentes(string actualizacionAsistentes)
 {
     ofstream datosAsistentes("Prueba Asistentes.txt");
     datosAsistentes << actualizacionAsistentes;
+    datosAsistentes.close();
 }
 
 

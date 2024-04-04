@@ -7,6 +7,15 @@
 
 using namespace std;
 
+void actualizarDatos(vector<Eventos*>& eventos)
+{
+    string actualizacionEventos, actualizacionAsistentes;
+    for(Eventos* evento : eventos)
+    {
+        
+    }
+}
+
 void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
 {
     ifstream datosEvento;

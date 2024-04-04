@@ -159,6 +159,11 @@ bool Eventos::compararFechas(string fecha1, string fecha2)
     return true;
 }
 
+string Eventos::informacionCompletaEventos()
+{
+    return this->tipoEvento + "," + this->ubicacion + "," + this->alimentos + "," + this->fecha + "," + this->tipoMusica + "," + this->codigoEvento; 
+}
+
 void Eventos::registrarAsistente(vector<Eventos*>& eventos)
 {
     Asistentes* aux;

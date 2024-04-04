@@ -26,6 +26,7 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
         void actualizarDatos(vector<Eventos*>&, string);
         void setAsistentes(vector<Asistentes*>);
         void registrarAsistente(vector<Eventos*>&);
+        string informacionCompletaEventos();
         vector<Asistentes*> getAsistentes();
         string getTipoEvento();
         string getUbicacion();
