@@ -43,23 +43,26 @@ void actualizarDatos(vector<Eventos*>& eventos)
         }
         
         contadorSaltoLinea2 = 0;
-        cout<<evento->getAsistentes().size()<<endl;
 
         for(Asistentes* asistente : evento->getAsistentes())
         {
             if(contadorSaltoLinea2 != 0)
             {
-                actualizacionAsistentes += "\n" + asistente->informacionCompletaAsistente();
+                cout<<"a"<<endl;
+                actualizacionAsistentes = actualizacionAsistentes + "\n" + asistente->informacionCompletaAsistente();
+                cout<<actualizacionAsistentes<<endl;
             }
             else
             {
-                actualizacionAsistentes += asistente->informacionCompletaAsistente();
+                cout<<"b"<<endl;
+                actualizacionAsistentes = actualizacionAsistentes + asistente->informacionCompletaAsistente();
+                cout<<actualizacionAsistentes<<endl;
             }
             contadorSaltoLinea2++;
         }
         ++contadorSaltoLinea;
     }
-    cout<<actualizacionAsistentes<<endl;
+    //cout<<actualizacionAsistentes<<endl;
     auxEventos->actualizarDatosEventos(actualizacionEventos);
     auxAsistentes->actualizarDatosAsistentes(actualizacionAsistentes);
 
@@ -101,7 +104,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
         Asistentes* aux;
         Asistentes* asistente;
         getline(datosAsistentes, texto);
-        cout<<texto<<endl;
+        //cout<<texto<<endl;
         asistente = aux->agregarDatosAsistentes(texto);
 
         for(Eventos* evento : eventos)
@@ -110,6 +113,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
             {
                 break;
             }
+
             else if(stoi(evento->getCodigoEvento()) == stoi(asistente->getCodigoEvento()))
             {
                 evento->agregarAsistente(asistente);
@@ -117,10 +121,10 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
         }
     }
 
-    // for(Eventos* evento : eventos)
-    // {
-    //     cout<<evento->getAsistentes().size()<<endl;
-    // }
+    for(Eventos* evento : eventos)
+    {
+        cout<<evento->getAsistentes().size()<<endl;
+    }
 
     datosAsistentes.close();
 }
