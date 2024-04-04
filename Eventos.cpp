@@ -31,34 +31,39 @@ void Eventos::agregarAsistente(Asistentes*& asistente)
 
 void Eventos::informacionGeneral(vector<Eventos*>& eventos)
 {
+    Asistentes* aux;
+    cout<<"\nInformes y datos:"<<endl;
+    cout<<"\nLista de eventos planeados:\n"<<endl;
 
-    cout<<"Informes y datos:"<<endl;
-    cout<<"Lista de eventos planeados:"<<endl;
-
-    int contBoda=0;
-    int contCarre=0;
-    int contReu=0;
-    int cantiBoda=0;
-    int cantiCarre=0;
-    int cantiReu=0;
+    int contBoda = 0, contCarre = 0, contReu = 0;
+    int cantiBoda = 0, cantiCarre = 0, cantiReu = 0;
+    int contEdadBoda = 0,  contEdadCarrete = 0, contEdadReu = 0; 
     Asistentes* a;
     for(Eventos* evento : eventos)
     {
-        cout<<evento->getTipoEvento()<<" "<<evento->getUbicacion()<<" "<<evento->getFecha()<<" "<<evento->getCodigoEvento()<<" "<<evento->getTipoMusica()<<" "<<evento->getAlimentos()<<endl;
+        cout<<evento->getTipoEvento()<<" | "<<evento->getUbicacion()<<" | "
+            <<evento->getFecha()<<" | "<<evento->getCodigoEvento()<<" | "
+            <<evento->getTipoMusica()<<" | "<<evento->getAlimentos()<<"\n"<<endl;
         if(evento->getTipoEvento() == "Carrete")
         {
             contCarre += 1;
             cantiCarre += evento->getAsistentes().size();
+            vector<Asistentes*> listaAsistentes = evento->getAsistentes();
+            contEdadCarrete += aux->sumaEdades(listaAsistentes);
         }
         else if(evento->getTipoEvento() == "Boda")
         {
             contBoda += 1;
             cantiBoda += evento->getAsistentes().size();
+            vector<Asistentes*> listaAsistentes = evento->getAsistentes();
+            contEdadBoda += aux->sumaEdades(listaAsistentes);
         }
         else if(evento->getTipoEvento() == "Reunion de Trabajo")
         {
             contReu += 1;
             cantiReu += evento->getAsistentes().size();
+            vector<Asistentes*> listaAsistentes = evento->getAsistentes();
+            contEdadReu += aux->sumaEdades(listaAsistentes);
         }
     }
     cout<<"\n";
@@ -73,15 +78,20 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
     //     }
     //     cout<<""<<endl;
     // }
-    cout<<"Porcentaje de cada tipo de evento:\n"
-        <<"Porcentaje de Carrete: " << contCarre*100/(contCarre + contBoda + contReu) << "%"
-        <<"Porcentaje de Boda: " << contBoda*100/(contCarre + contBoda + contReu) << "%"
-        <<"Porcentaje de Reunion de Trabajo: " << contReu*100/(contCarre + contBoda + contReu) << "%"<<endl;
+    cout<<"Porcentaje de cada tipo de evento:"
+        <<"\nPorcentaje de Carrete: " << contCarre*100/(contCarre + contBoda + contReu) << "%"
+        <<"\nPorcentaje de Boda: " << contBoda*100/(contCarre + contBoda + contReu) << "%"
+        <<"\nPorcentaje de Reunion de Trabajo: " << contReu*100/(contCarre + contBoda + contReu) << "%"<<endl;
 
-    cout<<"Promedio de asistentes por evento: "
+    cout<<"\nPromedio de asistentes por evento: "
         <<"\nPromedio Asistencia Carretes: "<< cantiCarre/contCarre
         <<"\nPromedio Asistencia Boda: "<< cantiBoda/contBoda
         <<"\nPromedio Asistencia Reunion de Trabajo: "<< cantiReu/contReu<<endl;
+
+    cout<<"\nPromedio de edad por Evento: "
+        <<"\nPromedio edad Carrete: " << contEdadCarrete/cantiCarre
+        <<"\nPromedio edad Boda: " << contEdadBoda/cantiBoda
+        <<"\nPromedio edad Reunion de Trabajo: " << contEdadReu/cantiReu<<endl;
     
 
 }

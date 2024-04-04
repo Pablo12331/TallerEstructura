@@ -51,6 +51,16 @@ string Asistentes::informacionCompletaAsistente()
     return to_string(this->edad) + "," + this->tipoPersona + "," + this->rut + "," + this->nombre + "," + this->datoDiferenciador + "," + this->codigoEvento;
 }
 
+int Asistentes::sumaEdades(vector<Asistentes*>& asistentes)
+{
+    int sumaEdades = 0;
+    for(Asistentes* asistente : asistentes)
+    {
+        sumaEdades += asistente->edad;
+    }
+    return sumaEdades;
+}
+
 Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
     

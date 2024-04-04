@@ -18,3 +18,4 @@ Boda,Valdivia parte Oeste,barra libre y picoteo,11/05/2039,Clasica,9345
 Reunion de Trabajo,Antofagasta parte Este,Almuerzo y once,24/09/2040,Ochentera,2589
 Carrete,Quillota parte Norte,Comida y bebestibles tipo coctel,06/01/2041,Moderna,6723
 Boda,Puerto Varas parte Sur,barra libre y picoteo,19/05/2042,Clasica,1298
+Boda,La serena la florida,barra libre y picoteo,3/3/3,Ochentera,3734
