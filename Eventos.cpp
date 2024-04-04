@@ -73,6 +73,11 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
     //     }
     //     cout<<""<<endl;
     // }
+    cout<<"Porcentaje de cada tipo de evento:\n"
+        <<"Porcentaje de Carrete: " << contCarre*100/(contCarre + contBoda + contReu) << "%"
+        <<"Porcentaje de Boda: " << contBoda*100/(contCarre + contBoda + contReu) << "%"
+        <<"Porcentaje de Reunion de Trabajo: " << contReu*100/(contCarre + contBoda + contReu) << "%"<<endl;
+
     cout<<"Promedio de asistentes por evento: "
         <<"\nPromedio Asistencia Carretes: "<< cantiCarre/contCarre
         <<"\nPromedio Asistencia Boda: "<< cantiBoda/contBoda

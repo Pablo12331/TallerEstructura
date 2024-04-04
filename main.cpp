@@ -30,31 +30,20 @@ void actualizarDatos(vector<Eventos*>& eventos)
     Eventos* auxEventos;
     Asistentes* auxAsistentes;
     string actualizacionEventos = "", actualizacionAsistentes = "";
-    int contadorSaltoLinea, contadorSaltoLinea2;
+    int contadorSaltoLinea = 0, contadorSaltoLinea2 = 0;
     for(Eventos* evento : eventos)
     {
+        cout<<eventos.size()<<endl;
         if(contadorSaltoLinea < eventos.size() - 1)
         {
+            cout<<"a"<<endl;
             actualizacionEventos += evento->informacionCompletaEventos() + "\n";
         }
         else
         {
             actualizacionEventos += evento->informacionCompletaEventos();
         }
-        contadorSaltoLinea++;
-
-        for(Asistentes* asistente : evento->getAsistentes())
-        {
-            if(contadorSaltoLinea2 < evento->getAsistentes().size() - 1)
-            {
-                actualizacionAsistentes += asistente->informacionCompletaAsistente() + "\n";
-            }
-            else
-            {
-                actualizacionAsistentes += asistente->informacionCompletaAsistente();
-            }
-            contadorSaltoLinea2++;
-        }
+        ++contadorSaltoLinea;
     }
     auxEventos->actualizarDatosEventos(actualizacionEventos);
     auxAsistentes->actualizarDatosAsistentes(actualizacionAsistentes);
@@ -130,6 +119,8 @@ int sistema()
     
 
     agregarDatos(eventos, fechaActualidad);
+
+    cout<<eventos.size()<<endl;
 
     int respuesta;
     do
