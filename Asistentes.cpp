@@ -48,7 +48,8 @@ string Asistentes::getCodigoEvento()
 
 string Asistentes::informacionCompletaAsistente()
 {
-    return to_string(this->edad) + "," + this->tipoPersona + "," + this->rut + "," + this->nombre + "," + this->datoDiferenciador + "," + this->codigoEvento;
+    string edad = to_string(this->edad);
+    return edad + "," + this->tipoPersona + "," + this->rut + "," + this->nombre + "," + this->datoDiferenciador + "," + this->codigoEvento;
 }
 
 int Asistentes::sumaEdades(vector<Asistentes*>& asistentes)

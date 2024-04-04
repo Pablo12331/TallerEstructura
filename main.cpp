@@ -41,12 +41,15 @@ void actualizarDatos(vector<Eventos*>& eventos)
         {
             actualizacionEventos += evento->informacionCompletaEventos();
         }
+        
+        contadorSaltoLinea2 = 0;
+        cout<<evento->getAsistentes().size()<<endl;
 
         for(Asistentes* asistente : evento->getAsistentes())
         {
-            if(contadorSaltoLinea2 < evento->getAsistentes().size() - 1)
+            if(contadorSaltoLinea2 != 0)
             {
-                actualizacionAsistentes += asistente->informacionCompletaAsistente() + "\n";
+                actualizacionAsistentes += "\n" + asistente->informacionCompletaAsistente();
             }
             else
             {
@@ -56,6 +59,7 @@ void actualizarDatos(vector<Eventos*>& eventos)
         }
         ++contadorSaltoLinea;
     }
+    cout<<actualizacionAsistentes<<endl;
     auxEventos->actualizarDatosEventos(actualizacionEventos);
     auxAsistentes->actualizarDatosAsistentes(actualizacionAsistentes);
 
@@ -84,7 +88,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
 
     ifstream datosAsistentes;
 
-    datosAsistentes.open("Prueba asistentes.txt", ios::in);
+    datosAsistentes.open("Prueba Asistentes.txt", ios::in);
 
     if(datosAsistentes.fail())
     {
@@ -97,6 +101,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
         Asistentes* aux;
         Asistentes* asistente;
         getline(datosAsistentes, texto);
+        cout<<texto<<endl;
         asistente = aux->agregarDatosAsistentes(texto);
 
         for(Eventos* evento : eventos)
@@ -111,6 +116,11 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
             }
         }
     }
+
+    // for(Eventos* evento : eventos)
+    // {
+    //     cout<<evento->getAsistentes().size()<<endl;
+    // }
 
     datosAsistentes.close();
 }
