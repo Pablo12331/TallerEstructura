@@ -16,7 +16,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
 
     if(datosEvento.fail())
     {
-        cout<<"ERROR! no se pudo abrir el archivo."<<endl;
+        cout<<"ERROR! no se pudo leer el archivo eventos."<<endl;
         exit(1);
     }
 
@@ -34,20 +34,23 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
 
     if(datosAsistentes.fail())
     {
-        cout<<"ERROR! no se pudo abrir el archivo."<<endl;
+        cout<<"ERROR! no se pudo leer el archivo de asistentes."<<endl;
         exit(1);
-    }
-
-    for(Eventos* evento : eventos)
-    {
-        
-    }
+    }  
 
     while(!datosAsistentes.eof())
     {
         Asistentes* aux;
+        Asistentes* asistente;
         getline(datosAsistentes, texto);
-        aux->agregarDatosAsistentes(texto);
+        asistente = aux->agregarDatosAsistentes(texto);
+        for(Eventos *evento : eventos)
+        {
+            if(asistente != nullptr && evento->getCodigoEvento() == asistente->getCodigoEvento())
+            {
+                evento->agregarAsistente(asistente);
+            }
+        }
     }
 
     datosAsistentes.close();

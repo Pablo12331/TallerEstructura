@@ -45,27 +45,25 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
         cout<<evento->getTipoEvento()<<" "<<evento->getUbicacion()<<" "<<evento->getFecha()<<" "<<evento->getCodigoEvento()<<" "<<evento->getTipoMusica()<<" "<<evento->getAlimentos()<<endl;
         if(evento->getTipoEvento() == "Carrete")
         {
+            cout<<"a"<<endl;
             contCarre += 1;
-            evento->agregarAsistente(a);
             cantiCarre += evento->getAsistentes().size();
-            cout<<contCarre<<" a "<< cantiCarre<<endl;
         }
         else if(evento->getTipoEvento() == "Boda")
         {
+            cout<<"b"<<endl;
             contBoda += 1;
-            evento->agregarAsistente(a);
             cantiBoda += evento->getAsistentes().size();
-            cout<<contBoda<<" a "<< cantiBoda<<endl;
         }
         else if(evento->getTipoEvento() == "Reunion de Trabajo")
         {
+            cout<<"c"<<endl;
             contReu += 1;
-            evento->agregarAsistente(a);
             cantiReu += evento->getAsistentes().size();
-            cout<<contReu<<" a "<< cantiReu<<endl;
         }
     }
     cout<<"\n";
+
     // cout<<"Asistentes de cada evento: "<<endl; 
     // for(Eventos* evento : eventos)
     // {
@@ -76,7 +74,10 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
     //     }
     //     cout<<""<<endl;
     // }
-    // cout<<"Promedio de asistentes por tipo de evento: "<<endl;
+    cout<<"Promedio de asistentes por evento: "
+        <<"\nPromedio Asistencia Carretes: "<< cantiCarre/contCarre
+        <<"\nPromedio Asistencia Boda: "<< cantiBoda/contBoda
+        <<"\nPromedio Asistencia Reunion de Trabajo: "<< cantiReu/contReu<<endl;
     
 
 }

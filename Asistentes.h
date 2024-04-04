@@ -8,9 +8,9 @@ class Asistentes
 {
     private:
         int edad;
-        string tipoPersona, rut, nombre, datoDiferenciador, estadoAsistencia;
+        string tipoPersona, rut, nombre, datoDiferenciador, estadoAsistencia, codigoEvento;
     public:
-        Asistentes(int, string, string, string, string, string);
+        Asistentes(int, string, string, string, string, string, string);
         ~Asistentes();
         int getEdad();
         string getTipoPersona();
@@ -18,6 +18,7 @@ class Asistentes
         string getNombre();
         string getDatoDiferenciador();
         string getEstadoAsistencia();
+        string getCodigoEvento();
         void setEstadoAsistencia(string);
         Asistentes* agregarDatosAsistentes(string);
 };
