@@ -14,7 +14,7 @@ class Asistentes
         ~Asistentes();
         int getEdad();
         int sumaEdades(vector<Asistentes*>&);
-        void crearAsistente();
+        void crearAsistente(vector<Asistentes*>&,string);
         string getTipoPersona();
         string getRut();
         string getNombre();

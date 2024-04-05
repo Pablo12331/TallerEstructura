@@ -52,9 +52,10 @@ string Asistentes::informacionCompletaAsistente()
     return edad + "," + this->tipoPersona + "," + this->rut + "," + this->nombre + "," + this->datoDiferenciador + "," + this->codigoEvento;
 }
 
-void Asistentes::crearAsistente()
+void Asistentes::crearAsistente(vector<Asistentes*>& asistentes, string codigoEvento)
 {
-    
+    Asistentes* asistente = new Asistentes(23, "tipopersona","rut", "nombre", "datodife", codigoEvento);
+    asistentes.push_back(asistente);
 }
 
 int Asistentes::sumaEdades(vector<Asistentes*>& asistentes)
