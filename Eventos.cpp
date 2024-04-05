@@ -84,7 +84,6 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
                 {
                     ciudadesAux++;
                 }
-
             }
             if(ciudadesAux == 0)
             {
@@ -93,20 +92,45 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
             }
             ciudadesAux = 0;
         }
-
     }
+    int contaux;
+    for(Eventos* evento : eventos)
+    {
+        contaux = 0;
+        for(string ciudades : ciudadesNombre)
+        {
+            if(ciudades == evento->getUbicacion())
+            {
+                ciudadesCont[contaux]++;
+            }
+            contaux++;
+        }
+    }
+    contaux = 0;
+    int max = 0;
+    for(int num : ciudadesCont)
+    {
+        if(num > max)
+        {
+            max = num;
+            ciudNombres = ciudadesNombre[contaux];
+        }
+        contaux++;
+    }
+
     cout<<"\n";
 
-    // cout<<"Asistentes de cada evento: "<<endl; 
-    // for(Eventos* evento : eventos)
-    // {
-    //     cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<endl;
-    //     for(Asistentes* asistente: evento->getAsistentes())
-    //     {
-    //         cout<<asistente->getNombre()<<asistente->getRut()<<endl;
-    //     }
-    //     cout<<""<<endl;
-    // }
+    cout<<"Asistentes de cada evento: "<<endl; 
+    for(Eventos* evento : eventos)
+    {
+
+        cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<endl;
+        for(Asistentes* asistente: evento->getAsistentes())
+        {
+            cout<<asistente->getNombre()<<asistente->getRut()<<endl;
+        }
+        cout<<""<<endl;
+    }
     cout<<"Porcentaje de cada tipo de evento:"
         <<"\nPorcentaje de Carrete: " << contCarre*100/(contCarre + contBoda + contReu) << "%"
         <<"\nPorcentaje de Boda: " << contBoda*100/(contCarre + contBoda + contReu) << "%"
@@ -118,7 +142,7 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
         <<"\nCantidad de Reuniones de trabajo: "<< contReu;
     cout<<""<<endl;
     cout<<"\nUbicación más usada en eventos:"
-        <<"\n";
+        <<"\n"<<ciudNombres;
 
     cout<<"\nPromedio de asistentes por evento: "
         <<"\nPromedio Asistencia Carretes: "<< cantiCarre/contCarre
