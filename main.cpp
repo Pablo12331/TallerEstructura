@@ -25,7 +25,7 @@ bool verificarFecha(string fecha)// Revisa que la fecha esté bien escrita
     }
 }
 
-void actualizarDatosAsistentes(vector<Asistentes*>& asistentes)//
+void actualizarDatosAsistentes(vector<Asistentes*>& asistentes)// Actualiza los datos de asistentes en el sistema 
 {
     Asistentes* auxAsistente;
     string actualizacionAsistentes = "";
@@ -46,7 +46,7 @@ void actualizarDatosAsistentes(vector<Asistentes*>& asistentes)//
     auxAsistente->actualizarDatosAsistentes(actualizacionAsistentes);
 }
 
-void actualizarDatosEventos(vector<Eventos*>& eventos)
+void actualizarDatosEventos(vector<Eventos*>& eventos)// Actualiza los datos del sistema cuando se modifican los eventos
 {
     Eventos* auxEventos;
     string actualizacionEventos = "";
@@ -75,7 +75,7 @@ void actualizarDatosEventos(vector<Eventos*>& eventos)
 }
 
 
-void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
+void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)// Agrega los datos de los txt dentro del sistema
 {
     string texto;
     
@@ -126,7 +126,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
     datosAsistentes.close();
 }
 
-int sistema()
+int sistema()//menú y funcionamiento del sistema
 {
     string fechaActualidad;
     string resp;
@@ -188,7 +188,7 @@ int sistema()
     actualizarDatosEventos(eventos);
     return 0;
 }
-int main()
+int main()//main
 {
     sistema();
     return 0;

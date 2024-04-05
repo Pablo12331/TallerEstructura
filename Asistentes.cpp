@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Asistentes::Asistentes(int edad, string tipoPersona, string rut, string nombre, string datoDiferenciador, string codigoEvento)
+Asistentes::Asistentes(int edad, string tipoPersona, string rut, string nombre, string datoDiferenciador, string codigoEvento)//Constructor
 {
     this -> edad = edad;
     this -> tipoPersona = tipoPersona;
