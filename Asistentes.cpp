@@ -28,29 +28,29 @@ void Asistentes::eliminarAsistentes(vector<Asistentes*>& asistentes)
     asistentes.clear();
 }
 
-int Asistentes::getEdad()
+int Asistentes::getEdad() //retorna la edad
 {
     return this -> edad;
 }
 
-string Asistentes::getTipoPersona()
+string Asistentes::getTipoPersona() //retorna el tipo de persona al que pertenece el asistente
 {
     return this -> tipoPersona;
 }        
 
-string Asistentes::getRut()
+string Asistentes::getRut() //retorna el rut del asistente
 {
     return this -> rut;
 }
-string Asistentes::getNombre()
+string Asistentes::getNombre() //retorna el nombre del asistente
 {
     return this -> nombre;
 }
-string Asistentes::getDatoDiferenciador()
+string Asistentes::getDatoDiferenciador() //retorna algun dato diferenciador del asistente
 {
     return this -> datoDiferenciador;
 }
-string Asistentes::getCodigoEvento()
+string Asistentes::getCodigoEvento() //retorna el código del evento asignado al asistente
 {
     return this -> codigoEvento;
 }
