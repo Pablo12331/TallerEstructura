@@ -19,7 +19,6 @@ Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string f
     this ->asistentes.reserve(1);
 }
 Eventos::~Eventos(){}//destructor
-
 void Eventos::agregarAsistente(Asistentes*& asistente)
 {
     if(asistente != nullptr)
@@ -200,9 +199,7 @@ void Eventos::eliminarEvento(vector<Eventos*>& eventos)
         if(eventos[i]->getCodigoEvento() == codElim)
         {
             vector<Asistentes*> listaEliminarAsistentes = eventos[i]->getAsistentes();
-            cout<<"a"<<endl;
             aux->eliminarAsistentes(listaEliminarAsistentes);
-            cout<<"b"<<endl;
             delete eventos[i]; // Libera la memoria del objeto
             eventos.erase(eventos.begin() + i);
             cout<<"Evento borrado."<<endl;
@@ -215,7 +212,6 @@ void Eventos::revisionAsistentes(vector<Eventos*>& eventos)
     desplegarEventos(eventos);
     string codigoEvento = obtenerCodigoEvento(eventos);
     int detector = 0;
-    cin>>codigoEvento;
     for(Eventos* evento : eventos)
     {
         if(evento->getCodigoEvento()==codigoEvento)
@@ -230,13 +226,10 @@ void Eventos::revisionAsistentes(vector<Eventos*>& eventos)
                 cout<<"No hay asistentes registrados todavía."<<endl;
                 break;
             }
-
         }
-        
     }
-    cout<<""<<endl;
     if(detector==0){
-        cout<<"El código ingresado no existe."<<endl;
+        cout<<"\nEl código ingresado no existe."<<endl;
     }
     detector = 0;
 }
@@ -338,6 +331,7 @@ void Eventos::registrarAsistente(vector<Eventos*>& eventos)
             {
                 Asistentes* asistente = aux->crearAsistente(codigoEvento);
                 evento->agregarAsistente(asistente);
+                cout<<"\nAsistente registrado con exito....";
             }
             break;
         }
@@ -468,6 +462,7 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 
     Eventos *evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
     eventos.push_back(evento);
+    cout<<"\nEvento registrado con exito..."<<endl;
 }
 void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, string linea)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {

@@ -72,8 +72,9 @@ Asistentes* Asistentes::crearAsistente(string codigoEvento)
     cout<<"\nIngrese el tipo de invitado (Ej: organizador, invitado, jefe, novia, etc.): ";
     getline(cin, tipoInvi);
 
+    if (cin.peek() == '\n') cin.ignore();
     cout<<"\nIngrese rut del invitado: ";
-    cin>>rutcrear;
+    getline(cin, rutcrear);
 
     if (cin.peek() == '\n') cin.ignore();
     cout<<"\nIngrese nombre del invitado: ";
@@ -84,6 +85,7 @@ Asistentes* Asistentes::crearAsistente(string codigoEvento)
     getline(cin, datoDife);
 
     Asistentes* asistente = new Asistentes(edadfinal, tipoInvi,rutcrear, nombreCrear, datoDife, codigoEvento);
+    
     return asistente;
 }
 
