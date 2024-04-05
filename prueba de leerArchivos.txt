@@ -20,4 +20,3 @@ Carrete,Quillota parte Norte,Comida y bebestibles tipo coctel,06/01/2041,Moderna
 Boda,Puerto Varas parte Sur,barra libre y picoteo,19/05/2042,Clasica,1298
 Boda,La Serena la florida,barra libre y picoteo,3/3/3,Ochentera,3734
 Boda,Coquimbo parte bajisima,barra libre y picoteo,3/3/3,Moderna,6769
-Boda,La Serena Bajo el puente,Comida y bebestibles tipo coctel,23/23/24000,Ochentera,1334

@@ -19,6 +19,15 @@ Asistentes::Asistentes(int edad, string tipoPersona, string rut, string nombre, 
 
 Asistentes::~Asistentes(){}//destructor
 
+void Asistentes::eliminarAsistentes(vector<Asistentes*>& asistentes)
+{
+    for(Asistentes* asistente : asistentes)
+    {
+        delete(asistente); // Libera la memoria del objeto
+    }
+    asistentes.clear();
+}
+
 int Asistentes::getEdad()
 {
     return this -> edad;
@@ -52,25 +61,28 @@ string Asistentes::informacionCompletaAsistente()
     return edad + "," + this->tipoPersona + "," + this->rut + "," + this->nombre + "," + this->datoDiferenciador + "," + this->codigoEvento;
 }
 
-Asistentes* Asistentes::crearAsistente()
+Asistentes* Asistentes::crearAsistente(string codigoEvento)
 {
     string edadcrear,tipoInvi, rutcrear,nombreCrear,datoDife;
     cout<<"\nIngrese edad del invitado: ";
     cin>>edadcrear;
     int edadfinal = stoi(edadcrear);
 
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    if (cin.peek() == '\n') cin.ignore();
     cout<<"\nIngrese el tipo de invitado (Ej: organizador, invitado, jefe, novia, etc.): ";
     getline(cin, tipoInvi);
-    ciut;
-    cout<<"\nIngrese el tipo de invitado (Ej: organizador, invitado, jefe, novia, etc.): ";
-    cin>>tipoInvi;
+
     cout<<"\nIngrese rut del invitado: ";
     cin>>rutcrear;
+
+    if (cin.peek() == '\n') cin.ignore();
     cout<<"\nIngrese nombre del invitado: ";
-    cin>>nombreCrear;
+    getline(cin, nombreCrear);
+
+    if (cin.peek() == '\n') cin.ignore();
     cout<<"\nIngrese dato diferenciador del invitado (Ej: familiar, analista financiero, etc.): ";
-    cin>>datoDife;
+    getline(cin, datoDife);
+
     Asistentes* asistente = new Asistentes(edadfinal, tipoInvi,rutcrear, nombreCrear, datoDife, codigoEvento);
     return asistente;
 }

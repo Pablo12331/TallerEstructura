@@ -187,21 +187,26 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
 }
 void Eventos::eliminarEvento(vector<Eventos*>& eventos)
 {
+    Asistentes* aux;
     int identiCont = -1;
 
     desplegarEventos(eventos);
     string codElim = obtenerCodigoEvento(eventos);
     
-    vector<Asistentes*> listaBorrada;
-    for(Eventos* evento : eventos)
+    int cantidadEventos = eventos.size();
+    
+    for(int i = 0; i < cantidadEventos; i++)
     {
-        identiCont++;
-        if(evento->getCodigoEvento()==codElim)
+        if(eventos[i]->getCodigoEvento() == codElim)
         {
-            std::vector<Eventos*>::iterator it = eventos.begin() + identiCont;
-            evento->setAsistentes(listaBorrada);
-            eventos.erase(it);
+            vector<Asistentes*> listaEliminarAsistentes = eventos[i]->getAsistentes();
+            cout<<"a"<<endl;
+            aux->eliminarAsistentes(listaEliminarAsistentes);
+            cout<<"b"<<endl;
+            delete eventos[i]; // Libera la memoria del objeto
+            eventos.erase(eventos.begin() + i);
             cout<<"Evento borrado."<<endl;
+            break;
         }
     }
 }
@@ -331,13 +336,12 @@ void Eventos::registrarAsistente(vector<Eventos*>& eventos)
         {
             for(int i=0; i < contAsis;i++)
             {
-                Asistentes* asistente = aux->crearAsistente();
+                Asistentes* asistente = aux->crearAsistente(codigoEvento);
                 evento->agregarAsistente(asistente);
             }
             break;
         }
     }
-    delete(aux);
     //aqui con el aux deberiamos llamar una funcion en Asistentes para pedir el numero de asistentes que se ingresaran y luego ir agregandolos a la lista
 }
 bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& eventos)
