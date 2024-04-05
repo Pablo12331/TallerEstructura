@@ -12,7 +12,7 @@ class Asistentes
     public:
         Asistentes(int, string, string, string, string, string);
         ~Asistentes();
-        int getEdad();
+        int getEdad();//arroz
         void eliminarAsistentes(vector<Asistentes*>&);
         int sumaEdades(vector<Asistentes*>&);
         Asistentes* crearAsistente(string);
