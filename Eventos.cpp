@@ -221,6 +221,7 @@ string Eventos::informacionCompletaEventos()
 void Eventos::registrarAsistente(vector<Eventos*>& eventos)
 {
     Asistentes* aux;
+    vector<Asistentes*> listaAsistentes;
     string codigoEvento;
     cout<<endl;
     for(Eventos* evento : eventos)
@@ -241,8 +242,14 @@ void Eventos::registrarAsistente(vector<Eventos*>& eventos)
         }
 
     } while (!verificarCodigoEvento(codigoEvento, eventos));
-
-    
+    for(Eventos* evento : eventos)
+    {
+        if(evento->getCodigoEvento() == codigoEvento)
+        {
+            listaAsistentes = evento->getAsistentes();
+        }
+    }
+    aux->crearAsistente(listaAsistentes, codigoEvento);
 
     //aqui con el aux deberiamos llamar una funcion en Asistentes para pedir el numero de asistentes que se ingresaran y luego ir agregandolos a la lista
 }
