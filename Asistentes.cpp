@@ -52,22 +52,27 @@ string Asistentes::informacionCompletaAsistente()
     return edad + "," + this->tipoPersona + "," + this->rut + "," + this->nombre + "," + this->datoDiferenciador + "," + this->codigoEvento;
 }
 
-void Asistentes::crearAsistente(vector<Asistentes*>& asistentes, string codigoEvento)
+Asistentes* Asistentes::crearAsistente()
 {
     string edadcrear,tipoInvi, rutcrear,nombreCrear,datoDife;
-    cout<<"Ingrese edad del invitado: "<<endl;
+    cout<<"\nIngrese edad del invitado: ";
     cin>>edadcrear;
     int edadfinal = stoi(edadcrear);
-    cout<<"Ingrese el tipo de invitado (Ej: organizador, invitado, jefe, novia, etc.): "<<endl;
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout<<"\nIngrese el tipo de invitado (Ej: organizador, invitado, jefe, novia, etc.): ";
+    getline(cin, tipoInvi);
+    ciut;
+    cout<<"\nIngrese el tipo de invitado (Ej: organizador, invitado, jefe, novia, etc.): ";
     cin>>tipoInvi;
-    cout<<"Ingrese rut del invitado: "<<endl;
+    cout<<"\nIngrese rut del invitado: ";
     cin>>rutcrear;
-    cout<<"Ingrese nombre del invitado: "<<endl;
+    cout<<"\nIngrese nombre del invitado: ";
     cin>>nombreCrear;
-    cout<<"Ingrese dato diferenciador del invitado (Ej: familiar, analista financiero, etc.): "<<endl;
+    cout<<"\nIngrese dato diferenciador del invitado (Ej: familiar, analista financiero, etc.): ";
     cin>>datoDife;
     Asistentes* asistente = new Asistentes(edadfinal, tipoInvi,rutcrear, nombreCrear, datoDife, codigoEvento);
-    asistentes.push_back(asistente);
+    return asistente;
 }
 
 int Asistentes::sumaEdades(vector<Asistentes*>& asistentes)

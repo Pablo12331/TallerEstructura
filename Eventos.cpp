@@ -20,16 +20,39 @@ Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string f
 }
 Eventos::~Eventos(){}//destructor
 
-void Eventos::agregarAsistente(Asistentes*& asistente, vector<Asistentes*>& asistentes)
+void Eventos::agregarAsistente(Asistentes*& asistente)
 {
     if(asistente != nullptr)
     {
         this -> asistentes.push_back(asistente);
     }
 }
+string Eventos::obtenerCodigoEvento(vector<Eventos*>& eventos)
+{
+    string codigoEvento;
+    do
+    {
+        cout<<"\nInserte el codigo del evento: ";
+        cin >> codigoEvento; 
+        if(!verificarCodigoEvento(codigoEvento, eventos))
+        {
+            cout<<"ERROR! El codigo de evento ingresado es erroneo, coloque uno de los mostrados anteriormente."<<endl;
+        }
+        else
+        {
+            break;
+        }
 
-
-
+    } while (!verificarCodigoEvento(codigoEvento, eventos));
+    return codigoEvento;
+}
+void Eventos::desplegarEventos(vector<Eventos*>& eventos)
+{
+    for(Eventos* evento : eventos)
+    {
+        cout<<"Tipo de Evento: "<<evento->getTipoEvento() << " | Codigo de Evento: " << evento->getCodigoEvento() << endl;
+    }
+}
 void Eventos::informacionGeneral(vector<Eventos*>& eventos)
 {
     Asistentes* aux;
@@ -165,13 +188,10 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
 void Eventos::eliminarEvento(vector<Eventos*>& eventos)
 {
     int identiCont = -1;
-    string codElim;
-    for(Eventos* evento : eventos)
-    {
-        cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<endl;
-    }
-    cout<<"Ingrese el código del evento que desea eliminar: "<<endl;
-    cin>>codElim;
+
+    desplegarEventos(eventos);
+    string codElim = obtenerCodigoEvento(eventos);
+    
     vector<Asistentes*> listaBorrada;
     for(Eventos* evento : eventos)
     {
@@ -187,12 +207,8 @@ void Eventos::eliminarEvento(vector<Eventos*>& eventos)
 }
 void Eventos::revisionAsistentes(vector<Eventos*>& eventos)
 { 
-    for(Eventos* evento : eventos)
-    {
-        cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<endl;
-    }
-    cout<<"Ingrese el código del evento que desea revisar: "<<endl;
-    string codigoEvento;
+    desplegarEventos(eventos);
+    string codigoEvento = obtenerCodigoEvento(eventos);
     int detector = 0;
     cin>>codigoEvento;
     for(Eventos* evento : eventos)
@@ -202,11 +218,12 @@ void Eventos::revisionAsistentes(vector<Eventos*>& eventos)
             detector++;
             for(Asistentes* asistente: evento->getAsistentes())
             {
-            cout<<"Nombre: "<<asistente->getNombre()<<" | Rut: "<<asistente->getRut()<<endl;
+                cout<<"Nombre: "<<asistente->getNombre()<<" | Rut: "<<asistente->getRut()<<endl;
             }
             if(evento->getAsistentes().size() ==0)
             {
-            cout<<"No hay asistentes registrados todavía."<<endl;
+                cout<<"No hay asistentes registrados todavía."<<endl;
+                break;
             }
 
         }
@@ -230,32 +247,26 @@ void Eventos::setAsistentes(vector<Asistentes*>asistentes)
 {
     this->asistentes = asistentes;
 }
-
 vector<Asistentes*> Eventos::getAsistentes()
 {
     return this -> asistentes;
 }
-
 string Eventos::getAlimentos()
 {
     return this -> alimentos;
 }
-
 string Eventos::getFecha()
 {
     return this->fecha;
 }
-
 string Eventos::getTipoMusica()
 {
     return this->tipoMusica;
 }
-
 string Eventos::getCodigoEvento()
 {
     return this -> codigoEvento;
 }
-
 bool Eventos::cantidadEventosDia(vector<Eventos*>& eventos, string fechaHoy)
 {
     int cantidadEventos = 0;
@@ -269,7 +280,6 @@ bool Eventos::cantidadEventosDia(vector<Eventos*>& eventos, string fechaHoy)
     if(cantidadEventos == 3){return false;}
     else{return true;}
 }
-
 bool Eventos::compararFechas(string fecha1, string fecha2)
 {
     string dia1, dia2, mes1, mes2, year1, year2;
@@ -298,80 +308,38 @@ bool Eventos::compararFechas(string fecha1, string fecha2)
 
     return true;
 }
-
 string Eventos::informacionCompletaEventos()
 {
     return this->tipoEvento + "," + this->ubicacion + "," + this->alimentos + "," + this->fecha + "," + this->tipoMusica + "," + this->codigoEvento; 
 }
-
 void Eventos::registrarAsistente(vector<Eventos*>& eventos)
 {
     Asistentes* aux;
-    Eventos* auxEvento;
-    vector<Asistentes*> listaAsistentes;
-    string codigoEvento;
-    cout<<endl;
-    for(Eventos* evento : eventos)
-    {
-        cout<<"Tipo de Evento: "<<evento->getTipoEvento() << " | Codigo de Evento: " << evento->getCodigoEvento() << endl;
-    }
-    do
-    {
-        cout<<"\nInserte el codigo del evento al cual quiere registrar asistentes: ";
-        cin >> codigoEvento; 
-        if(!verificarCodigoEvento(codigoEvento, eventos))
-        {
-            cout<<"ERROR! El codigo de evento ingresado es erroneo, coloque uno de los mostrados anteriormente."<<endl;
-        }
-        else
-        {
-            break;
-        }
 
-    } while (!verificarCodigoEvento(codigoEvento, eventos));
+    desplegarEventos(eventos);
+    string codigoEvento = obtenerCodigoEvento(eventos);
+
+    string cantAsis;
+    string edadcrear,tipoInvi, rutcrear,nombreCrear,datoDife;
+    int edadfinal;
+    cout<<"\nIngrese la cantidad de asistentes(Ej: 3): ";
+    cin>>cantAsis;
+    int contAsis = stoi(cantAsis);
     for(Eventos* evento : eventos)
     {
         if(evento->getCodigoEvento() == codigoEvento)
         {
-            listaAsistentes = evento->getAsistentes();
-        }
-    }
-    string cantAsis;
-    string edadcrear,tipoInvi, rutcrear,nombreCrear,datoDife;
-    int edadfinal;
-    cout<<"Ingrese la cantidad de asistentes(Ej: 3): "<<endl;
-    cin>>cantAsis;
-    int contAsis = stoi(cantAsis);
-    for(int i=0; i < contAsis;i++)
-    {
-        cout<<"Ingrese edad del invitado: "<<endl;
-        cin>>edadcrear;
-        edadfinal = stoi(edadcrear);
-        cout<<"Ingrese el tipo de invitado (Ej: organizador, invitado, jefe, novia, etc.): "<<endl;
-        cin>>tipoInvi;
-        cout<<"Ingrese rut del invitado: "<<endl;
-        cin>>rutcrear;
-        cout<<"Ingrese nombre del invitado: "<<endl;
-        cin>>nombreCrear;
-        cout<<"Ingrese dato diferenciador del invitado (Ej: familiar, analista financiero, etc.): "<<endl;
-        cin>>datoDife;
-        Asistentes* asistente = new Asistentes(edadfinal, tipoInvi,rutcrear, nombreCrear, datoDife, codigoEvento);
-
-        for(Eventos* evento : eventos)
-        {
-
-
-            if(evento->getCodigoEvento() == codigoEvento)
+            for(int i=0; i < contAsis;i++)
             {
-                
+                Asistentes* asistente = aux->crearAsistente();
+                evento->agregarAsistente(asistente);
             }
+            break;
         }
-        aux->crearAsistente(listaAsistentes, codigoEvento);
     }
-
+    delete(aux);
     //aqui con el aux deberiamos llamar una funcion en Asistentes para pedir el numero de asistentes que se ingresaran y luego ir agregandolos a la lista
 }
-
 bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& eventos)
 {
     for(Eventos* evento : eventos)
@@ -383,7 +351,6 @@ bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& event
     }
     return false;
 }
-
 void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
 {
     int codigoDelEvento;
@@ -498,7 +465,6 @@ void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
     Eventos *evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
     eventos.push_back(evento);
 }
-
 void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, string linea)//esto es una mausque herramienta misteriosa que ocuparemos cuando sepa leer archivos.txt xd
 {
     string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento;
@@ -517,7 +483,6 @@ void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, st
     evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
     eventos.push_back(evento);
 }
-
 void Eventos::actualizarDatosEventos(string eventosActualizados)
 {
     ofstream datosEventos("prueba de leerArchivos.txt");

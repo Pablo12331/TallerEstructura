@@ -14,7 +14,8 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
     public:
         Eventos(string, string, string, string, string, string);
         ~Eventos();//destructor
-        void agregarAsistente(Asistentes*&,vector<Asistentes*>&);
+        void agregarAsistente(Asistentes*&);
+        string obtenerCodigoEvento(vector<Eventos*>&);
         bool compararFechas(string, string);
         bool verificarCodigoEvento(string, vector<Eventos*>&);
         bool cantidadEventosDia(vector<Eventos*>&, string);
@@ -23,11 +24,12 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
         creada en el main y poder ir tirando la informacion que piden o al menos lo que es la lista de eventos programados y la lista 
         de asistentes registrados por cada evento*/
         void agregarDatosEventos(vector<Eventos*>&, string, string);
+        void desplegarEventos(vector<Eventos*>&);
         void actualizarDatosEventos(string);
         void setAsistentes(vector<Asistentes*>);
         void registrarAsistente(vector<Eventos*>&);
-        void revisionAsistentes(vector<Eventos*>& eventos);
-        void eliminarEvento(vector<Eventos*>& eventos);
+        void revisionAsistentes(vector<Eventos*>&);
+        void eliminarEvento(vector<Eventos*>&);
         string informacionCompletaEventos();
         vector<Asistentes*> getAsistentes();
         string getTipoEvento();
