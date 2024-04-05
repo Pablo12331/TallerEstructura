@@ -165,7 +165,7 @@ int sistema()
                 }
                 break;
             case 2:
-                aux->registrarAsistente(eventos)
+                aux->registrarAsistente(eventos);
                 break;
             case 3:
                 aux ->revisionAsistentes(eventos);
