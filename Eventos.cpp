@@ -139,8 +139,9 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
     cout<<"\nCantidad de eventos:"
         <<"\nCantidad de Carretes: "<< contCarre
         <<"\nCantidad de Bodas: "<< contBoda
-        <<"\nCantidad de Reuniones de trabajo: "<< contReu;
+        <<"\nCantidad de Reuniones de trabajo: "<< contReu<<endl;
     cout<<""<<endl;
+
     cout<<"\nUbicación más usada en eventos:"
         <<"\n"<<ciudNombres;
 
