@@ -81,7 +81,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)// Agrega los datos
     
     ifstream datosEvento;
 
-    datosEvento.open("prueba de leerArchivos.txt", ios::in);
+    datosEvento.open("Datos Eventos.txt", ios::in);
 
     if(datosEvento.fail())
     {
@@ -98,7 +98,7 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)// Agrega los datos
 
     ifstream datosAsistentes;
 
-    datosAsistentes.open("Prueba Asistentes.txt", ios::in);
+    datosAsistentes.open("Datos Asistentes.txt", ios::in);
 
     if(datosAsistentes.fail())
     {

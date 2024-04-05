@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string fecha, string tipoMusica, string codigoEvento)
+Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string fecha, string tipoMusica, string codigoEvento)//constructor
 {
     this -> tipoEvento = tipoEvento;
     this -> ubicacion = ubicacion;
@@ -19,14 +19,14 @@ Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string f
     this ->asistentes.reserve(1);
 }
 Eventos::~Eventos(){}//destructor
-void Eventos::agregarAsistente(Asistentes*& asistente)
+void Eventos::agregarAsistente(Asistentes*& asistente)//agrega un asistente a la lista de asistentes
 {
     if(asistente != nullptr)
     {
         this -> asistentes.push_back(asistente);
     }
 }
-string Eventos::obtenerCodigoEvento(vector<Eventos*>& eventos)
+string Eventos::obtenerCodigoEvento(vector<Eventos*>& eventos)//obtiene el codigo de un evento que selecciones
 {
     string codigoEvento;
     do
@@ -45,14 +45,14 @@ string Eventos::obtenerCodigoEvento(vector<Eventos*>& eventos)
     } while (!verificarCodigoEvento(codigoEvento, eventos));
     return codigoEvento;
 }
-void Eventos::desplegarEventos(vector<Eventos*>& eventos)
+void Eventos::desplegarEventos(vector<Eventos*>& eventos)//desplega por pantalla todos los eventos de la lista
 {
     for(Eventos* evento : eventos)
     {
         cout<<"Tipo de Evento: "<<evento->getTipoEvento() << " | Codigo de Evento: " << evento->getCodigoEvento() << endl;
     }
 }
-void Eventos::informacionGeneral(vector<Eventos*>& eventos)
+void Eventos::informacionGeneral(vector<Eventos*>& eventos)//muestra por pantalla algunos datos estadisticos de los eventos
 {
     Asistentes* aux;
     cout<<"\nInformes y datos:"<<endl;
@@ -184,7 +184,7 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
     
 
 }
-void Eventos::eliminarEvento(vector<Eventos*>& eventos)
+void Eventos::eliminarEvento(vector<Eventos*>& eventos)//elimina un evento de la lista de eventos
 {
     Asistentes* aux;
     int identiCont = -1;
@@ -207,7 +207,7 @@ void Eventos::eliminarEvento(vector<Eventos*>& eventos)
         }
     }
 }
-void Eventos::revisionAsistentes(vector<Eventos*>& eventos)
+void Eventos::revisionAsistentes(vector<Eventos*>& eventos)//muestra los asistentes de un evento en especifico
 { 
     desplegarEventos(eventos);
     string codigoEvento = obtenerCodigoEvento(eventos);
@@ -233,39 +233,35 @@ void Eventos::revisionAsistentes(vector<Eventos*>& eventos)
     }
     detector = 0;
 }
-string Eventos::getTipoEvento()
+string Eventos::getTipoEvento()//te retorna el tipo de evento
 {
     return this -> tipoEvento;
 }
-string Eventos::getUbicacion()
+string Eventos::getUbicacion()//te retorna la ubicacion del evento
 {
     return this -> ubicacion;
 }
-void Eventos::setAsistentes(vector<Asistentes*>asistentes)
-{
-    this->asistentes = asistentes;
-}
-vector<Asistentes*> Eventos::getAsistentes()
+vector<Asistentes*> Eventos::getAsistentes()//te retorna la lista de asistentes
 {
     return this -> asistentes;
 }
-string Eventos::getAlimentos()
+string Eventos::getAlimentos()//te retorna el formato de comida en el evento
 {
     return this -> alimentos;
 }
-string Eventos::getFecha()
+string Eventos::getFecha()//te retorna la fecha del evento
 {
     return this->fecha;
 }
-string Eventos::getTipoMusica()
+string Eventos::getTipoMusica()//te retorna el tipo de musica
 {
     return this->tipoMusica;
 }
-string Eventos::getCodigoEvento()
+string Eventos::getCodigoEvento()//te retorna el codigo del evento
 {
     return this -> codigoEvento;
 }
-bool Eventos::cantidadEventosDia(vector<Eventos*>& eventos, string fechaHoy)
+bool Eventos::cantidadEventosDia(vector<Eventos*>& eventos, string fechaHoy)//retorna la cantidad de eventos del dia
 {
     int cantidadEventos = 0;
     for(Eventos* evento : eventos)
@@ -278,7 +274,7 @@ bool Eventos::cantidadEventosDia(vector<Eventos*>& eventos, string fechaHoy)
     if(cantidadEventos == 3){return false;}
     else{return true;}
 }
-bool Eventos::compararFechas(string fecha1, string fecha2)
+bool Eventos::compararFechas(string fecha1, string fecha2)//compara dos fechas para saber si una paso antes de la otra
 {
     string dia1, dia2, mes1, mes2, year1, year2;
     if(fecha1 == fecha2)
@@ -306,11 +302,11 @@ bool Eventos::compararFechas(string fecha1, string fecha2)
 
     return true;
 }
-string Eventos::informacionCompletaEventos()
+string Eventos::informacionCompletaEventos()//retorna la informacion completa del objeto en cuestion
 {
     return this->tipoEvento + "," + this->ubicacion + "," + this->alimentos + "," + this->fecha + "," + this->tipoMusica + "," + this->codigoEvento; 
 }
-void Eventos::registrarAsistente(vector<Eventos*>& eventos)
+void Eventos::registrarAsistente(vector<Eventos*>& eventos)//registra cierta cantidad de asistentes en el evento que se seleccione
 {
     Asistentes* aux;
 
@@ -338,7 +334,7 @@ void Eventos::registrarAsistente(vector<Eventos*>& eventos)
     }
     //aqui con el aux deberiamos llamar una funcion en Asistentes para pedir el numero de asistentes que se ingresaran y luego ir agregandolos a la lista
 }
-bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& eventos)
+bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& eventos)//verifica que el codigo del evento este correcto
 {
     for(Eventos* evento : eventos)
     {
@@ -349,7 +345,7 @@ bool Eventos::verificarCodigoEvento(string codigoEvento, vector<Eventos*>& event
     }
     return false;
 }
-void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)
+void Eventos::crearEvento(vector<Eventos*>& eventos, string fechaHoy)//crea un evento y luego lo agrega a la lista de eventos
 {
     int codigoDelEvento;
     string tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento; 
@@ -482,9 +478,9 @@ void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, st
     evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
     eventos.push_back(evento);
 }
-void Eventos::actualizarDatosEventos(string eventosActualizados)
+void Eventos::actualizarDatosEventos(string eventosActualizados)//actualiza los datos del txt
 {
-    ofstream datosEventos("prueba de leerArchivos.txt");
+    ofstream datosEventos("Datos Eventos.txt");
     datosEventos << eventosActualizados;
     datosEventos.close();
 }
