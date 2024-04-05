@@ -7,7 +7,7 @@
 
 using namespace std;
 
-bool verificarFecha(string fecha)
+bool verificarFecha(string fecha)// Revisa que la fecha esté bien escrita
 {
     string dia = "", mes = "", year = "";
     stringstream separarFechas(fecha);
@@ -25,7 +25,7 @@ bool verificarFecha(string fecha)
     }
 }
 
-void actualizarDatosAsistentes(vector<Asistentes*>& asistentes)
+void actualizarDatosAsistentes(vector<Asistentes*>& asistentes)//
 {
     Asistentes* auxAsistente;
     string actualizacionAsistentes = "";
@@ -193,4 +193,3 @@ int main()
     sistema();
     return 0;
 }
-
