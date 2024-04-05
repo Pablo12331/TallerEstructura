@@ -97,7 +97,6 @@ Asistentes* Asistentes::agregarDatosAsistentes(string datosAsistente)//esto es u
 
 void Asistentes::actualizarDatosAsistentes(string actualizacionAsistentes)
 {
-    cout<<"a"<<endl;
     ofstream datosAsistentes("Prueba Asistentes.txt", ios::out);
     datosAsistentes << actualizacionAsistentes;
     datosAsistentes.close();
