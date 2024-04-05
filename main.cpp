@@ -123,14 +123,6 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
             }
         }
     }
-    
-    for(Eventos*evento : eventos)
-    {
-        cout<<evento->getAsistentes().size()<<endl;
-    }
-
-    cout<<eventos.size()<<endl;
-
     datosAsistentes.close();
 }
 

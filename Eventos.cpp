@@ -93,6 +93,7 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
             ciudadesAux = 0;
         }
     }
+
     int contaux;
     for(Eventos* evento : eventos)
     {
@@ -124,10 +125,10 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
     for(Eventos* evento : eventos)
     {
 
-        cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<endl;
+        cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<":"<<endl;
         for(Asistentes* asistente: evento->getAsistentes())
         {
-            cout<<asistente->getNombre()<<asistente->getRut()<<endl;
+            cout<<"Nombre: "<<asistente->getNombre()<<" | Rut: "<<asistente->getRut()<<endl;
         }
         cout<<""<<endl;
     }
@@ -140,10 +141,9 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
         <<"\nCantidad de Carretes: "<< contCarre
         <<"\nCantidad de Bodas: "<< contBoda
         <<"\nCantidad de Reuniones de trabajo: "<< contReu<<endl;
-    cout<<""<<endl;
 
     cout<<"\nUbicación más usada en eventos:"
-        <<"\n"<<ciudNombres;
+        <<"\n"<<ciudNombres<<endl;
 
     cout<<"\nPromedio de asistentes por evento: "
         <<"\nPromedio Asistencia Carretes: "<< cantiCarre/contCarre
