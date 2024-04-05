@@ -72,15 +72,12 @@ Asistentes* Asistentes::crearAsistente(string codigoEvento)
     cout<<"\nIngrese el tipo de invitado (Ej: organizador, invitado, jefe, novia, etc.): ";
     getline(cin, tipoInvi);
 
-    if (cin.peek() == '\n') cin.ignore();
     cout<<"\nIngrese rut del invitado: ";
     getline(cin, rutcrear);
 
-    if (cin.peek() == '\n') cin.ignore();
     cout<<"\nIngrese nombre del invitado: ";
     getline(cin, nombreCrear);
 
-    if (cin.peek() == '\n') cin.ignore();
     cout<<"\nIngrese dato diferenciador del invitado (Ej: familiar, analista financiero, etc.): ";
     getline(cin, datoDife);
 
