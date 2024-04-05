@@ -421,11 +421,8 @@ void Eventos::agregarDatosEventos(vector<Eventos*>& eventos, string fechaHoy, st
     getline(datosSeparar, tipoMusica, ',');
     getline(datosSeparar, codigoEvento, ',');
 
-    if(!compararFechas(fechaHoy, fecha))
-    {
-        evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
-        eventos.push_back(evento);
-    } 
+    evento = new Eventos(tipoEvento, ubicacion, alimentos, fecha, tipoMusica, codigoEvento);
+    eventos.push_back(evento);
 }
 
 void Eventos::actualizarDatosEventos(string eventosActualizados)
