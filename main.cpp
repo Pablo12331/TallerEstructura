@@ -165,16 +165,16 @@ int sistema()
                 }
                 break;
             case 2:
-                aux->registrarAsistente(eventos);
+                
                 break;
             case 3:
-
+                aux ->revisionAsistentes(eventos);
                 break;
             case 4:
                 aux->informacionGeneral(eventos);
                 break;
             case 5:
-                
+                aux->eliminarEvento(eventos);
                 break;
             case 6:
                 cout<<"saliendo..."<<endl;

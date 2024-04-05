@@ -126,11 +126,14 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
     cout<<"Asistentes de cada evento: "<<endl; 
     for(Eventos* evento : eventos)
     {
-
         cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<":"<<endl;
         for(Asistentes* asistente: evento->getAsistentes())
         {
             cout<<"Nombre: "<<asistente->getNombre()<<" | Rut: "<<asistente->getRut()<<endl;
+        }
+        if(evento->getAsistentes().size() ==0)
+        {
+            cout<<"No hay asistentes registrados todavía."<<endl;
         }
         cout<<""<<endl;
     }
@@ -158,6 +161,43 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
         <<"\nPromedio edad Reunion de Trabajo: " << contEdadReu/cantiReu<<endl;
     
 
+}
+void Eventos::eliminarEvento(vector<Eventos*>& eventos)
+{
+    
+}
+void Eventos::revisionAsistentes(vector<Eventos*>& eventos)
+{ 
+    for(Eventos* evento : eventos)
+    {
+        cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<endl;
+    }
+    cout<<"Ingrese el código del evento que desea revisar: "<<endl;
+    string codigoEvento;
+    int detector = 0;
+    cin>>codigoEvento;
+    for(Eventos* evento : eventos)
+    {
+        if(evento->getCodigoEvento()==codigoEvento)
+        {
+            detector++;
+            for(Asistentes* asistente: evento->getAsistentes())
+            {
+            cout<<"Nombre: "<<asistente->getNombre()<<" | Rut: "<<asistente->getRut()<<endl;
+            }
+            if(evento->getAsistentes().size() ==0)
+            {
+            cout<<"No hay asistentes registrados todavía."<<endl;
+            }
+
+        }
+        
+    }
+    cout<<""<<endl;
+    if(detector==0){
+        cout<<"El código ingresado no existe."<<endl;
+    }
+    detector = 0;
 }
 string Eventos::getTipoEvento()
 {
@@ -279,7 +319,8 @@ void Eventos::registrarAsistente(vector<Eventos*>& eventos)
     string cantAsis;
     cout<<"Ingrese la cantidad de asistentes(Ej: 3): "<<endl;
     cin>>cantAsis;
-    for(int i=0; i < stoi(cantAsis);i++)
+    int contAsis = stoi(cantAsis);
+    for(int i=0; i < contAsis;i++)
     {
         aux->crearAsistente(listaAsistentes, codigoEvento);
     }
