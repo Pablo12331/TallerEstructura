@@ -14,7 +14,7 @@ class Eventos//esto esta abierto a cambios, como lo veo lo que es la musica y fe
     public:
         Eventos(string, string, string, string, string, string);
         ~Eventos();//destructor
-        void agregarAsistente(Asistentes*&);
+        void agregarAsistente(Asistentes*&,vector<Asistentes*>&);
         bool compararFechas(string, string);
         bool verificarCodigoEvento(string, vector<Eventos*>&);
         bool cantidadEventosDia(vector<Eventos*>&, string);

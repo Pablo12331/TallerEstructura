@@ -20,7 +20,7 @@ Eventos::Eventos(string tipoEvento, string ubicacion, string alimentos, string f
 }
 Eventos::~Eventos(){}//destructor
 
-void Eventos::agregarAsistente(Asistentes*& asistente)
+void Eventos::agregarAsistente(Asistentes*& asistente, vector<Asistentes*>& asistentes)
 {
     if(asistente != nullptr)
     {
@@ -172,12 +172,14 @@ void Eventos::eliminarEvento(vector<Eventos*>& eventos)
     }
     cout<<"Ingrese el código del evento que desea eliminar: "<<endl;
     cin>>codElim;
+    vector<Asistentes*> listaBorrada;
     for(Eventos* evento : eventos)
     {
         identiCont++;
         if(evento->getCodigoEvento()==codElim)
         {
             std::vector<Eventos*>::iterator it = eventos.begin() + identiCont;
+            evento->setAsistentes(listaBorrada);
             eventos.erase(it);
             cout<<"Evento borrado."<<endl;
         }
@@ -305,6 +307,7 @@ string Eventos::informacionCompletaEventos()
 void Eventos::registrarAsistente(vector<Eventos*>& eventos)
 {
     Asistentes* aux;
+    Eventos* auxEvento;
     vector<Asistentes*> listaAsistentes;
     string codigoEvento;
     cout<<endl;
@@ -334,11 +337,35 @@ void Eventos::registrarAsistente(vector<Eventos*>& eventos)
         }
     }
     string cantAsis;
+    string edadcrear,tipoInvi, rutcrear,nombreCrear,datoDife;
+    int edadfinal;
     cout<<"Ingrese la cantidad de asistentes(Ej: 3): "<<endl;
     cin>>cantAsis;
     int contAsis = stoi(cantAsis);
     for(int i=0; i < contAsis;i++)
     {
+        cout<<"Ingrese edad del invitado: "<<endl;
+        cin>>edadcrear;
+        edadfinal = stoi(edadcrear);
+        cout<<"Ingrese el tipo de invitado (Ej: organizador, invitado, jefe, novia, etc.): "<<endl;
+        cin>>tipoInvi;
+        cout<<"Ingrese rut del invitado: "<<endl;
+        cin>>rutcrear;
+        cout<<"Ingrese nombre del invitado: "<<endl;
+        cin>>nombreCrear;
+        cout<<"Ingrese dato diferenciador del invitado (Ej: familiar, analista financiero, etc.): "<<endl;
+        cin>>datoDife;
+        Asistentes* asistente = new Asistentes(edadfinal, tipoInvi,rutcrear, nombreCrear, datoDife, codigoEvento);
+
+        for(Eventos* evento : eventos)
+        {
+
+
+            if(evento->getCodigoEvento() == codigoEvento)
+            {
+                
+            }
+        }
         aux->crearAsistente(listaAsistentes, codigoEvento);
     }
 
