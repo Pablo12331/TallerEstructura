@@ -164,7 +164,24 @@ void Eventos::informacionGeneral(vector<Eventos*>& eventos)
 }
 void Eventos::eliminarEvento(vector<Eventos*>& eventos)
 {
-    
+    int identiCont = -1;
+    string codElim;
+    for(Eventos* evento : eventos)
+    {
+        cout<<evento -> getTipoEvento()<<" "<<evento -> getCodigoEvento()<<endl;
+    }
+    cout<<"Ingrese el código del evento que desea eliminar: "<<endl;
+    cin>>codElim;
+    for(Eventos* evento : eventos)
+    {
+        identiCont++;
+        if(evento->getCodigoEvento()==codElim)
+        {
+            std::vector<Eventos*>::iterator it = eventos.begin() + identiCont;
+            eventos.erase(it);
+            cout<<"Evento borrado."<<endl;
+        }
+    }
 }
 void Eventos::revisionAsistentes(vector<Eventos*>& eventos)
 { 
