@@ -54,7 +54,18 @@ string Asistentes::informacionCompletaAsistente()
 
 void Asistentes::crearAsistente(vector<Asistentes*>& asistentes, string codigoEvento)
 {
-    Asistentes* asistente = new Asistentes(23, "tipopersona","rut", "nombre", "datodife", codigoEvento);
+    string edadcrear,tipoInvi, rutcrear,nombreCrear,datoDif;
+    cout<<"Ingrese edad del invitado: "<<endl;
+    cin>>edadcrear;
+    cout<<"Ingrese el tipo de invitado (Ej: organizador, invitado, jefe, novia, etc.): "<<endl;
+    cin>>tipoInvi;
+    cout<<"Ingrese rut del invitado: "<<endl;
+    cin>>rutcrear;
+    cout<<"Ingrese nombre del invitado: "<<endl;
+    cin>>nombreCrear;
+    cout<<"Ingrese dato diferenciador del invitado (Ej: familiar, analista financiero, etc.): "<<endl;
+    cin>>datoDif;
+    Asistentes* asistente = new Asistentes(stoi(edadcrear), tipoInvi,rutcrear, nombreCrear, datoDif, codigoEvento);
     asistentes.push_back(asistente);
 }
 

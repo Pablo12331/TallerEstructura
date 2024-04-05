@@ -28,6 +28,8 @@ void Eventos::agregarAsistente(Asistentes*& asistente)
     }
 }
 
+
+
 void Eventos::informacionGeneral(vector<Eventos*>& eventos)
 {
     Asistentes* aux;
@@ -274,7 +276,13 @@ void Eventos::registrarAsistente(vector<Eventos*>& eventos)
             listaAsistentes = evento->getAsistentes();
         }
     }
-    aux->crearAsistente(listaAsistentes, codigoEvento);
+    string cantAsis;
+    cout<<"Ingrese la cantidad de asistentes(Ej: 3): "<<endl;
+    cin>>cantAsis;
+    for(int i=0; i < stoi(cantAsis);i++)
+    {
+        aux->crearAsistente(listaAsistentes, codigoEvento);
+    }
 
     //aqui con el aux deberiamos llamar una funcion en Asistentes para pedir el numero de asistentes que se ingresaran y luego ir agregandolos a la lista
 }

@@ -3,7 +3,7 @@
 22,invitado,456789123,María Rojas,invitado especial,1234
 29,novio,192837465,Alejandro Mora,familiar,5678
 18,novia,987654321,Carla Espinoza,familiar,5678
-31,padrino,123456789,Roberto Juárez,invita doespecial,5678
+31,padrino,123456789,Roberto Juárez,invitado especial,5678
 33,madrina,987654312,Lucía Gómez,invitado especial,5678
 28,invitado,654321789,Omar Vargas,otro,5678
 45,jefe superior,213456789,Elena Núñez,CEO,9012
