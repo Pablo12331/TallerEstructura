@@ -70,11 +70,6 @@ void actualizarDatosEventos(vector<Eventos*>& eventos)
 
         contadorSaltoLinea++;
     }
-    for(Eventos* evento : eventos)
-    {
-        cout<<evento->getAsistentes().size()<<endl;
-    }
-    cout<<asistentes.size()<<endl;
     auxEventos->actualizarDatosEventos(actualizacionEventos);
     actualizarDatosAsistentes(asistentes);
 }
@@ -116,7 +111,6 @@ void agregarDatos(vector<Eventos*>& eventos, string fechaHoy)
         Asistentes* aux;
         Asistentes* asistente;
         asistente = aux->agregarDatosAsistentes(texto);
-        cout<<texto<<endl;
         for(Eventos* evento : eventos)
         {
             if(asistente == nullptr)
